@@ -1,0 +1,14 @@
+site_name: Openveo Devices API
+theme: readthedocs
+site_dir: site/version
+markdown_extensions:
+  - fenced_code
+  - tables
+pages:
+- 'INTRODUCTION': 'index.md'
+- 'PLUGIN DEVELOPERS':
+  - 'Getting started': 'pluginsDevelopers/getting-started.md'
+  - 'API': 'pluginsDevelopers/api.md'
+- 'DEVELOPERS':
+  - 'Installation': 'developers/installation.md'
+  - 'Unit tests': 'developers/unit-tests.md'
