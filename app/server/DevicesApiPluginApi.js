@@ -13,8 +13,7 @@ var DEVICES_TYPES = process.requireDevicesApi('app/server/devices/types.js');
  * Devices API.
  *
  *     // Get API
- *     var openVeoApi = require('@openveo/api');
- *     var devicesApi = openVeoApi.api.getApi('devices-api');
+ *     var devicesApi = process.api.getApi('devices-api');
  *
  * @class DevicesApiPluginApi
  * @extends PluginApi
@@ -32,7 +31,7 @@ util.inherits(DevicesApiPluginApi, openVeoApi.plugin.PluginApi);
  *
  * @example
  *
- *     var devicesApi = openVeoApi.api.getApi('devices-api');
+ *     var devicesApi = process.api.getApi('devices-api');
  *     console.log(devicesApi.getDevicesTypes());
  *
  * @method getDevicesTypes
@@ -47,7 +46,7 @@ DevicesApiPluginApi.prototype.getDevicesTypes = function() {
  *
  * @example
  *
- *     var devicesApi = openVeoApi.api.getApi('devices-api');
+ *     var devicesApi = process.api.getApi('devices-api');
  *     var DEVICES_TYPES = devicesApi.getDevicesTypes();
  *     var pilot = devicesApi.getPilot(DEVICES_TYPES.VEOBOX);
  *

@@ -13,8 +13,7 @@ Configure your devices to establish a socket connection on your OpenVeo socket s
 You can now use the OpenVeo Devices API to get information from your devices :
 
 ```js
-var openVeoApi = require('@openveo/api');
-var devicesApi = openVeoApi.api.getApi('devices-api');
+var devicesApi = process.api.getApi('devices-api');
 var DEVICES_TYPES = devicesApi.getDevicesTypes();
 var pilot = devicesApi.getPilot(DEVICES_TYPES.VEOBOX);
 
@@ -26,8 +25,7 @@ pilot.on(pilot.EVENTS.AUTHENTICATED, function(id, deviceIp, socketId) {
 Or control your devices :
 
 ```js
-var openVeoApi = require('@openveo/api');
-var devicesApi = openVeoApi.api.getApi('devices-api');
+var devicesApi = process.api.getApi('devices-api');
 var DEVICES_TYPES = devicesApi.getDevicesTypes();
 var pilot = devicesApi.getPilot(DEVICES_TYPES.VEOBOX);
 
