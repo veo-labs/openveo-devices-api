@@ -15,7 +15,6 @@
     "async": "2.1.4"
   },
   "devDependencies": {
-    "@openveo/test": "3.*",
     "chai": "3.5.0",
     "chai-spies": "0.7.1",
     "grunt": "1.0.1",
@@ -30,8 +29,7 @@
     "yuidoc-theme-blue": "0.1.9"
   },
   "peerDependencies": {
-    "@openveo/core": "2.*",
-    "@openveo/api": "3.*"
+    "@openveo/core": "2.*"
   },
   "scripts": {
     "eslint": "grunt eslint",
