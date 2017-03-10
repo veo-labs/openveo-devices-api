@@ -14,6 +14,16 @@
 var VEOBOX_MESSAGES = {
 
   /**
+   * A socket connection has been established with the device.
+   *
+   * @property CONNECTED
+   * @type String
+   * @default 'connection'
+   * @final
+   */
+  CONNECTED: 'connection',
+
+  /**
    * Notify a device connection.
    *
    * @property AUTHENTICATED

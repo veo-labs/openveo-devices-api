@@ -240,6 +240,19 @@ VeoboxController.prototype.updateInputsAction = function(data, socket, callback)
 };
 
 /**
+ * Handles socket's connection.
+ *
+ * Socket's connection has been established with a device.
+ *
+ * @method connectAction
+ * @param {Socket} socket The socket
+ */
+VeoboxController.prototype.connectAction = function(socket) {
+  process.logger.info('Device connected', {socketId: socket.id});
+  this.emitter.emitEvent(new AdvancedEvent(VEOBOX_MESSAGES.CONNECTED, socket));
+};
+
+/**
  * Handles socket's disconnection.
  *
  * Connection with a device has been lost.

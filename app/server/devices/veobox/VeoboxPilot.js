@@ -227,6 +227,7 @@ function VeoboxPilot(devicesEmitter, namespace) {
   });
 
   // Emits devices' messages
+  this.clientEmitter.on(VEOBOX_MESSAGES.CONNECTED, Pilot.prototype.emitMessageWithId.bind(this));
   this.clientEmitter.on(VEOBOX_MESSAGES.SESSION_STATUS_UPDATED, Pilot.prototype.emitMessageWithId.bind(this));
   this.clientEmitter.on(VEOBOX_MESSAGES.NEW_SESSION_INDEX, Pilot.prototype.emitMessageWithId.bind(this));
   this.clientEmitter.on(VEOBOX_MESSAGES.NAME_UPDATED, Pilot.prototype.emitMessageWithId.bind(this));
