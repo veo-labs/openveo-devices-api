@@ -195,8 +195,8 @@ VeoboxController.prototype.updateStorageAction = function(data, socket, callback
   // Validate data
   try {
     data = openVeoApi.util.shallowValidateObject(data, {
-      free: {type: 'number', required: true},
-      used: {type: 'number', required: true}
+      free: {type: 'number', gte: 0, required: true},
+      used: {type: 'number', gte: 0, required: true}
     });
   } catch (error) {
     process.logger.warn(error.message, {error: error, event: VEOBOX_MESSAGES.STORAGE_UPDATED});
