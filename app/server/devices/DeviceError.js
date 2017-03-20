@@ -17,7 +17,7 @@ var util = require('util');
  * @param {String} code The error code
  */
 function DeviceError(message, id, code) {
-  DeviceError.super_.call(this);
+  Error.captureStackTrace(this, this.constructor);
 
   Object.defineProperties(this, {
 
@@ -46,7 +46,7 @@ function DeviceError(message, id, code) {
      * @type String
      * @final
      */
-    message: {value: message},
+    message: {value: message, writable: true},
 
     /**
      * The error name.
@@ -55,7 +55,7 @@ function DeviceError(message, id, code) {
      * @type String
      * @final
      */
-    name: {value: 'DeviceError'}
+    name: {value: 'DeviceError', writable: true}
 
   });
 }
