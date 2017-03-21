@@ -106,7 +106,9 @@ var VEOBOX_STATUSES = process.requireDevicesApi('app/server/devices/veobox/statu
  * @param {Object} data Data to send to the device
  * @param {Function} callback Function to call when it's done with :
  *  - **Null** Always null
- *  - **Array** Results for each device
+ *  - **Array** Results for each device with :
+ *    - **DeviceError** error An error if something went wrong
+ *    - **String** value The device's id
  */
 function ask(ids, name, data, callback) {
   var self = this;
@@ -122,9 +124,9 @@ function ask(ids, name, data, callback) {
       process.logger.debug('Say "' + name + '" to device', {id: id, data: data});
       device.socket.emit(name, data, function(response) {
         if (response && response.error)
-          return callback(new DeviceError('Asking for "' + name + '" failed', id, response.error.code));
+          return callback(new DeviceError('Asking for "' + name + '" failed', id, response.error.code), id);
 
-        callback();
+        callback(null, id);
       });
     });
   });
@@ -286,7 +288,7 @@ VeoboxPilot.prototype.askForName = function(ids, callback) {
  * @param {String} id The device's id
  * @param {String} name The new name of the device
  * @param {Function} callback Function to call when it's done with :
- *  - **Error** An error if something went wrong, null otherwise
+ *  - **DeviceError** An error if something went wrong, null otherwise
  */
 VeoboxPilot.prototype.askForUpdateName = function(id, name, callback) {
   var device = this.getClient(id);
