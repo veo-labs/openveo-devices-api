@@ -23,7 +23,7 @@ describe('VeoboxPilot', function() {
     expectedCallback = function() {};
     expectedSocket = {
       id: 42,
-      handshake: {address: '127.0.0.1'},
+      handshake: {address: '127.0.0.1', headers: {}},
       emit: function(name, data, callback) {
         callback();
       }
@@ -75,6 +75,18 @@ describe('VeoboxPilot', function() {
         assert.strictEqual(ip, expectedSocket.handshake.address, 'Unexpected IP');
         assert.strictEqual(id, expectedId, 'Unexpected id');
         assert.strictEqual(callback, expectedCallback, 'Unexpected callback');
+        done();
+      });
+
+      emitter.emitEvent(new AdvancedEvent(pilot.MESSAGES.AUTHENTICATED, expectedId, expectedSocket, expectedCallback));
+    });
+
+    it('should be emitted with X-Forwarded-For as IP address if defined', function(done) {
+      var expectedId = '42';
+      expectedSocket.handshake.headers['x-forwarded-for'] = '127.0.0.42';
+
+      pilot.on(pilot.MESSAGES.AUTHENTICATED, function(ip, id, callback) {
+        assert.strictEqual(ip, expectedSocket.handshake.headers['x-forwarded-for'], 'Wrong IP');
         done();
       });
 
@@ -197,7 +209,7 @@ describe('VeoboxPilot', function() {
       var expectedId2 = '43';
       var expectedSocket2 = {
         id: 43,
-        handshake: {address: '127.0.0.2'},
+        handshake: {address: '127.0.0.2', headers: {}},
         emit: function(name, data, callback) {
           callback();
         }

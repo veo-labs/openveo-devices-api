@@ -22,7 +22,7 @@ describe('VeoboxSocketController', function() {
   beforeEach(function() {
     namespace = new openVeoApi.socket.SocketNamespace();
     controller = new VeoboxSocketController(namespace);
-    expectedSocket = {id: 43, handshake: {address: '127.0.0.1'}};
+    expectedSocket = {id: 43, handshake: {address: '127.0.0.1', headers: {}}};
     expectedCallback = function() {};
   });
 

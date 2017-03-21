@@ -223,7 +223,7 @@ function VeoboxPilot(devicesEmitter, namespace) {
   // Listen to device's greeting message
   this.clientEmitter.on(VEOBOX_MESSAGES.AUTHENTICATED, function(eventName, id, socket, callback) {
     self.addClient(id, socket);
-    self.emit(eventName, socket.handshake.address, id, callback);
+    self.emit(eventName, socket.handshake.headers['x-forwarded-for'] || socket.handshake.address, id, callback);
   });
 
   // Emits devices' messages
