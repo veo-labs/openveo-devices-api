@@ -353,3 +353,21 @@ VeoboxPilot.prototype.askForStopRecord = function(ids, callback) {
 VeoboxPilot.prototype.askForSessionIndex = function(ids, callback) {
   ask.call(this, ids, 'session.index', {type: 'tag'}, callback);
 };
+
+/**
+ * Cuts the communication with the device.
+ *
+ * @method disconnect
+ * @async
+ * @param {Array} ids The list of connected devices' ids to disconnect
+ */
+VeoboxPilot.prototype.disconnect = function(ids) {
+  var self = this;
+  ids.forEach(function(id) {
+    process.logger.debug('Disconnect device', {id: id});
+    var device = self.getClient(id);
+
+    if (device)
+      device.socket.disconnect(true);
+  });
+};

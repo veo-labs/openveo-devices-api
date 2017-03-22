@@ -310,4 +310,55 @@ describe('VeoboxPilot', function() {
 
   });
 
+  // disconnect method
+  describe('disconnect', function(done) {
+
+    it('should close communication with clients', function() {
+      var count = 0;
+      var expectedSockets = [
+        {
+          id: 42,
+          handshake: {address: '127.0.0.42', headers: {}},
+          disconnect: function() {
+            count++;
+          }
+        },
+        {
+          id: 43,
+          handshake: {address: '127.0.0.43', headers: {}},
+          disconnect: function() {
+            count++;
+          }
+        }
+      ];
+      var expectedDevicesIds = [];
+
+      expectedSockets.forEach(function(socket) {
+        expectedDevicesIds.push(socket.id);
+        emitter.emitEvent(new AdvancedEvent(pilot.MESSAGES.AUTHENTICATED, socket.id, socket, expectedCallback));
+      });
+
+      pilot.disconnect(expectedDevicesIds);
+
+      assert.equal(count, expectedSockets.length);
+    });
+
+    it('should throw an error if ids is not an array', function() {
+      var wrongValues = [undefined, null, 'String', 42, {}];
+
+      wrongValues.forEach(function(wrongValue) {
+        assert.throws(function() {
+          pilot.disconnect(wrongValue);
+        }, null, null, 'Expected an exception for value : ' + wrongValue);
+      });
+    });
+
+    it('should not throw an error if device is not connected', function() {
+      assert.doesNotThrow(function() {
+        pilot.disconnect(['unknown device']);
+      });
+    });
+
+  });
+
 });
