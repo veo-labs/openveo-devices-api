@@ -17,7 +17,7 @@ To install OpenVeo Devices API you first need to install OpenVeo Core if not alr
     cd /WORKSPACE_PATH/openveo-core
     npm install @openveo/core
 
-Your workspace should look like this :
+Your workspace should look like this:
 
 ```
 .
@@ -46,7 +46,7 @@ We use [NPM links](https://docs.npmjs.com/cli/link) to deal with this problem an
     cd /WORKSPACE_PATH/
     git clone git@github.com:veo-labs/openveo-devices-api.git
 
-Your workspace should look like this :
+Your workspace should look like this:
 
 ```
 .
