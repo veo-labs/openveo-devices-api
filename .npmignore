@@ -1,5 +1,5 @@
 # Linux
-# *.swp is already ignored by npm
+# *.swp are already ignored by npm
 .directory
 *~
 
@@ -10,19 +10,17 @@ Icon?
 # Windows
 Thumbs.db
 Desktop.ini
-
-# Windows XP
 ehthumbs.db
 
 # Logs
 *.log
-/logs
 
 # Project npm dependencies
 /node_modules
 
 # IDE
 /nbproject
+.idea/
 
 # Deliver
 /build
@@ -33,12 +31,12 @@ ehthumbs.db
 # Documentation
 /docs
 /site
-/.grunt
 /mkdocs.yml
 
 # Grunt files
 /Gruntfile.js
 /tasks
+/.grunt
 
 # Git
 .gitignore

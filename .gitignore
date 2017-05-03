@@ -11,8 +11,6 @@ Icon?
 # Windows
 Thumbs.db
 Desktop.ini
-
-# Windows XP
 ehthumbs.db
 
 # Logs
@@ -30,4 +28,6 @@ nbproject/
 
 # Documentation
 /site
+
+# Grunt files
 /.grunt
