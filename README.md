@@ -6,11 +6,11 @@ OpenVeo Devices API does not add any back end or front end pages to OpenVeo. It 
 
 # Documentation
 
-Documentation is available on [Github pages](http://veo-labs.github.io/openveo-devices-api/1.0.0).
+Documentation is available on [Github pages](http://veo-labs.github.io/openveo-devices-api/1.0.0/).
 
 # Contributors
 
-Maintainer : [Veo-Labs](http://www.veo-labs.com/)
+Maintainer: [Veo-Labs](http://www.veo-labs.com/)
 
 # License
 

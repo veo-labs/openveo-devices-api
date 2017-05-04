@@ -1,6 +1,6 @@
 {
   "name": "@openveo/devices-api",
-  "version": "1.0.0-RC2",
+  "version": "1.0.0",
   "description": "OpenVeo Plugin to interact with external devices",
   "keywords": [
     "openveo",
@@ -34,7 +34,7 @@
     "yuidoc-theme-blue": "0.1.9"
   },
   "peerDependencies": {
-    "@openveo/core": "4.0.0-RC2"
+    "@openveo/core": "4.*"
   },
   "scripts": {
     "eslint": "grunt eslint",

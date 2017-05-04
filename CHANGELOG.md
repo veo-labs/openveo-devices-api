@@ -1,4 +1,4 @@
-# 1.0.0 / YYYY-MM-DD
+# 1.0.0 / 2017-05-04
 
 Initial version of the plugin.
 
