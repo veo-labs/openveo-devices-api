@@ -1,0 +1,1668 @@
+{
+    "project": {
+        "name": "OpenVeo Devices API",
+        "description": "Node.js API exposed by OpenVeo Devices API Plugin",
+        "version": "1.0.0"
+    },
+    "files": {
+        "app\\server\\controllers\\DeviceSocketController.js": {
+            "name": "app\\server\\controllers\\DeviceSocketController.js",
+            "modules": {},
+            "classes": {
+                "DeviceSocketController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app\\server\\controllers\\VeoboxSocketController.js": {
+            "name": "app\\server\\controllers\\VeoboxSocketController.js",
+            "modules": {},
+            "classes": {
+                "VeoboxController": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app\\server\\controllers\\doc.js": {
+            "name": "app\\server\\controllers\\doc.js",
+            "modules": {
+                "controllers": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "app\\server\\devices\\veobox\\VeoboxPilot.js": {
+            "name": "app\\server\\devices\\veobox\\VeoboxPilot.js",
+            "modules": {},
+            "classes": {
+                "VeoboxPilot": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app\\server\\devices\\veobox\\messages.js": {
+            "name": "app\\server\\devices\\veobox\\messages.js",
+            "modules": {},
+            "classes": {
+                "VEOBOX_MESSAGES": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app\\server\\devices\\veobox\\statuses.js": {
+            "name": "app\\server\\devices\\veobox\\statuses.js",
+            "modules": {},
+            "classes": {
+                "VEOBOX_STATUSES": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app\\server\\devices\\DeviceError.js": {
+            "name": "app\\server\\devices\\DeviceError.js",
+            "modules": {},
+            "classes": {
+                "DeviceError": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app\\server\\devices\\DevicePilot.js": {
+            "name": "app\\server\\devices\\DevicePilot.js",
+            "modules": {},
+            "classes": {
+                "DevicePilot": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app\\server\\devices\\doc.js": {
+            "name": "app\\server\\devices\\doc.js",
+            "modules": {
+                "devices": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "app\\server\\devices\\factory.js": {
+            "name": "app\\server\\devices\\factory.js",
+            "modules": {},
+            "classes": {
+                "factory": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app\\server\\devices\\types.js": {
+            "name": "app\\server\\devices\\types.js",
+            "modules": {},
+            "classes": {
+                "TYPES": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app\\server\\DevicesApiPlugin.js": {
+            "name": "app\\server\\DevicesApiPlugin.js",
+            "modules": {
+                "devices-api": 1
+            },
+            "classes": {
+                "DevicesApiPlugin": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app\\server\\DevicesApiPluginApi.js": {
+            "name": "app\\server\\DevicesApiPluginApi.js",
+            "modules": {},
+            "classes": {
+                "DevicesApiPluginApi": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "app\\server\\devicesPilotsManager.js": {
+            "name": "app\\server\\devicesPilotsManager.js",
+            "modules": {},
+            "classes": {
+                "devicesPilotsManager": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "controllers": {
+            "name": "controllers",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "DeviceSocketController": 1,
+                "VeoboxController": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "main",
+            "file": "app\\server\\controllers\\VeoboxSocketController.js",
+            "line": 15,
+            "description": "Include all plugin's controllers to handle HTTP or socket messages.",
+            "itemtype": "main"
+        },
+        "devices": {
+            "name": "devices",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "VeoboxPilot": 1,
+                "VEOBOX_MESSAGES": 1,
+                "VEOBOX_STATUSES": 1,
+                "DeviceError": 1,
+                "DevicePilot": 1,
+                "factory": 1,
+                "TYPES": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "main",
+            "file": "app\\server\\devices\\types.js",
+            "line": 7,
+            "description": "All supported devices with their associated pilots.",
+            "static": 1,
+            "itemtype": "main"
+        },
+        "devices-api": {
+            "name": "devices-api",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "DevicesApiPlugin": 1,
+                "DevicesApiPluginApi": 1,
+                "devicesPilotsManager": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "app\\server\\devicesPilotsManager.js",
+            "line": 7
+        }
+    },
+    "classes": {
+        "DeviceSocketController": {
+            "name": "DeviceSocketController",
+            "shortname": "DeviceSocketController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "controllers",
+            "namespace": "",
+            "file": "app\\server\\controllers\\DeviceSocketController.js",
+            "line": 13,
+            "description": "Defines a base controller to handle socket messages from devices.",
+            "extends": "SocketController",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "devicesType",
+                    "description": "The type of devices associated to the controller",
+                    "type": "Number"
+                },
+                {
+                    "name": "namespace",
+                    "description": "The socket namespace managed by this controller.\nSee [OpenVeo API documentation](https://github.com/veo-labs/openveo-api) for more information about SocketNamespace",
+                    "type": "SocketNamespace"
+                }
+            ]
+        },
+        "VeoboxController": {
+            "name": "VeoboxController",
+            "shortname": "VeoboxController",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "controllers",
+            "namespace": "",
+            "file": "app\\server\\controllers\\VeoboxSocketController.js",
+            "line": 15,
+            "description": "Defines a socket controller to handle messages from [Veoboxes](http://www.veo-labs.com/veobox).",
+            "extends": "DeviceSocketController",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "namespace",
+                    "description": "The socket namespace managed by this controller.\nSee [OpenVeo API documentation](https://github.com/veo-labs/openveo-api) for more information about SocketNamespace",
+                    "type": "SocketNamespace"
+                }
+            ]
+        },
+        "VeoboxPilot": {
+            "name": "VeoboxPilot",
+            "shortname": "VeoboxPilot",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "devices",
+            "namespace": "",
+            "file": "app\\server\\devices\\veobox\\VeoboxPilot.js",
+            "line": 174,
+            "description": "Defines a pilot to interact with [Veobox devices](http://www.veo-labs.com/veobox).",
+            "extends": "DevicePilot",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "devicesEmitter",
+                    "description": "The devices' emitter to listen to devices' messages",
+                    "type": "AdvancedEmitter"
+                },
+                {
+                    "name": "namespace",
+                    "description": "The namespace associated to the devices",
+                    "type": "SocketNamespace"
+                }
+            ]
+        },
+        "VEOBOX_MESSAGES": {
+            "name": "VEOBOX_MESSAGES",
+            "shortname": "VEOBOX_MESSAGES",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "devices",
+            "namespace": "",
+            "file": "app\\server\\devices\\veobox\\messages.js",
+            "line": 7,
+            "description": "Defines the list of socket messages sent by Veobox's devices.",
+            "static": 1
+        },
+        "VEOBOX_STATUSES": {
+            "name": "VEOBOX_STATUSES",
+            "shortname": "VEOBOX_STATUSES",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "devices",
+            "namespace": "",
+            "file": "app\\server\\devices\\veobox\\statuses.js",
+            "line": 7,
+            "description": "Defines the list of Veobox statuses."
+        },
+        "DeviceError": {
+            "name": "DeviceError",
+            "shortname": "DeviceError",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "devices",
+            "namespace": "",
+            "file": "app\\server\\devices\\DeviceError.js",
+            "line": 9,
+            "description": "Defines an error returned by a device with its id.",
+            "extends": "Error",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "message",
+                    "description": "The error message",
+                    "type": "String"
+                },
+                {
+                    "name": "id",
+                    "description": "The device id the error belongs to",
+                    "type": "String"
+                },
+                {
+                    "name": "code",
+                    "description": "The error code",
+                    "type": "String"
+                }
+            ]
+        },
+        "DevicePilot": {
+            "name": "DevicePilot",
+            "shortname": "DevicePilot",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "devices",
+            "namespace": "",
+            "file": "app\\server\\devices\\DevicePilot.js",
+            "line": 10,
+            "description": "Defines a base pilot for all devices' pilots.\n\nA DevicePilot interacts with a particular type of devices.\nIt emits events received by the devices and offers methods to control them.",
+            "extends": "Pilot",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "type",
+                    "description": "The devices' type",
+                    "type": "Number"
+                },
+                {
+                    "name": "devicesEmitter",
+                    "description": "The devices' emitter",
+                    "type": "AdvancedEmitter"
+                },
+                {
+                    "name": "namespace",
+                    "description": "The socket namespace associated to the devices",
+                    "type": "SocketNamespace"
+                }
+            ]
+        },
+        "factory": {
+            "name": "factory",
+            "shortname": "factory",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "devices",
+            "namespace": "",
+            "file": "app\\server\\devices\\factory.js",
+            "line": 7,
+            "description": "Devices' pilot factory.",
+            "static": 1
+        },
+        "TYPES": {
+            "name": "TYPES",
+            "shortname": "TYPES",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "devices",
+            "namespace": "",
+            "file": "app\\server\\devices\\types.js",
+            "line": 7,
+            "description": "Defines the list of available devices' types.",
+            "static": 1
+        },
+        "DevicesApiPlugin": {
+            "name": "DevicesApiPlugin",
+            "shortname": "DevicesApiPlugin",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "devices-api",
+            "namespace": "",
+            "file": "app\\server\\DevicesApiPlugin.js",
+            "line": 11,
+            "description": "Defines the Devices API Plugin.",
+            "extends": "Plugin",
+            "is_constructor": 1
+        },
+        "DevicesApiPluginApi": {
+            "name": "DevicesApiPluginApi",
+            "shortname": "DevicesApiPluginApi",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "devices-api",
+            "namespace": "",
+            "file": "app\\server\\DevicesApiPluginApi.js",
+            "line": 12,
+            "description": "Devices API.\n\n    // Get API\n    var devicesApi = process.api.getApi('devices-api');",
+            "extends": "PluginApi",
+            "is_constructor": 1
+        },
+        "devicesPilotsManager": {
+            "name": "devicesPilotsManager",
+            "shortname": "devicesPilotsManager",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "devices-api",
+            "namespace": "",
+            "file": "app\\server\\devicesPilotsManager.js",
+            "line": 7,
+            "description": "Stores the list of devices' pilots.\n\nOne pilot per type of devices.",
+            "static": 1
+        }
+    },
+    "elements": {},
+    "classitems": [
+        {
+            "file": "app\\server\\controllers\\DeviceSocketController.js",
+            "line": 28,
+            "description": "The devices' pilot associated to the controller.",
+            "itemtype": "property",
+            "name": "pilot",
+            "type": "DevicePilot",
+            "final": 1,
+            "class": "DeviceSocketController",
+            "module": "controllers"
+        },
+        {
+            "file": "app\\server\\controllers\\VeoboxSocketController.js",
+            "line": 31,
+            "description": "Handles greeting message from a device.",
+            "itemtype": "method",
+            "name": "authenticateAction",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Message's datas",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "id",
+                            "description": "The device unique id",
+                            "type": "String"
+                        }
+                    ]
+                },
+                {
+                    "name": "socket",
+                    "description": "The opened socket",
+                    "type": "Socket"
+                },
+                {
+                    "name": "callback",
+                    "description": "The callback to respond to the device",
+                    "type": "Function"
+                }
+            ],
+            "class": "VeoboxController",
+            "module": "controllers"
+        },
+        {
+            "file": "app\\server\\controllers\\VeoboxSocketController.js",
+            "line": 56,
+            "description": "Handles message informing about a device's status modification.",
+            "itemtype": "method",
+            "name": "updateSessionStatusAction",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Message's datas",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "status",
+                            "description": "The new session status",
+                            "type": "String"
+                        }
+                    ]
+                },
+                {
+                    "name": "socket",
+                    "description": "The opened socket",
+                    "type": "Socket"
+                },
+                {
+                    "name": "callback",
+                    "description": "The callback to respond to the device",
+                    "type": "Function"
+                }
+            ],
+            "class": "VeoboxController",
+            "module": "controllers"
+        },
+        {
+            "file": "app\\server\\controllers\\VeoboxSocketController.js",
+            "line": 95,
+            "description": "Handles message informing about a device's session index.",
+            "itemtype": "method",
+            "name": "indexSessionAction",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Message's datas",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "type",
+                            "description": "The index type (\"image\" or \"tag\")",
+                            "type": "String"
+                        },
+                        {
+                            "name": "timecode",
+                            "description": "The index timecode (in ms)",
+                            "type": "String"
+                        },
+                        {
+                            "name": "data",
+                            "description": "The index associated data (e.g. binary JPEG image for type \"image\")",
+                            "type": "Mixed",
+                            "optional": true
+                        }
+                    ]
+                },
+                {
+                    "name": "socket",
+                    "description": "The opened socket",
+                    "type": "Socket"
+                },
+                {
+                    "name": "callback",
+                    "description": "The callback to respond to the device",
+                    "type": "Function"
+                }
+            ],
+            "class": "VeoboxController",
+            "module": "controllers"
+        },
+        {
+            "file": "app\\server\\controllers\\VeoboxSocketController.js",
+            "line": 126,
+            "description": "Handles message informing about a device's name modification.\n\nDevice's name has changed.",
+            "itemtype": "method",
+            "name": "updateNameAction",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Message's datas",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "name",
+                            "description": "The new device's name",
+                            "type": "String"
+                        }
+                    ]
+                },
+                {
+                    "name": "socket",
+                    "description": "The opened socket",
+                    "type": "Socket"
+                },
+                {
+                    "name": "callback",
+                    "description": "The callback to respond to the device",
+                    "type": "Function"
+                }
+            ],
+            "class": "VeoboxController",
+            "module": "controllers"
+        },
+        {
+            "file": "app\\server\\controllers\\VeoboxSocketController.js",
+            "line": 153,
+            "description": "Handles message informing about a device's presets modification.\n\nDevice's presets have changed.",
+            "itemtype": "method",
+            "name": "updatePresetsAction",
+            "params": [
+                {
+                    "name": "presets",
+                    "description": "The new list of configured presets",
+                    "type": "Object"
+                },
+                {
+                    "name": "socket",
+                    "description": "The opened socket",
+                    "type": "Socket"
+                },
+                {
+                    "name": "callback",
+                    "description": "The callback to respond to the device",
+                    "type": "Function"
+                }
+            ],
+            "class": "VeoboxController",
+            "module": "controllers"
+        },
+        {
+            "file": "app\\server\\controllers\\VeoboxSocketController.js",
+            "line": 182,
+            "description": "Handles message informing about a device's storage modification.",
+            "itemtype": "method",
+            "name": "updateStorageAction",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Message's datas",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "free",
+                            "description": "Number of free Bytes in device's hard drive",
+                            "type": "Number"
+                        },
+                        {
+                            "name": "used",
+                            "description": "Number of used Bytes in device's hard drive",
+                            "type": "Number"
+                        }
+                    ]
+                },
+                {
+                    "name": "socket",
+                    "description": "The opened socket",
+                    "type": "Socket"
+                },
+                {
+                    "name": "callback",
+                    "description": "The callback to respond to the device",
+                    "type": "Function"
+                }
+            ],
+            "class": "VeoboxController",
+            "module": "controllers"
+        },
+        {
+            "file": "app\\server\\controllers\\VeoboxSocketController.js",
+            "line": 211,
+            "description": "Handles message informing about a device's inputs modification.\n\nDevice's inputs have changed.",
+            "itemtype": "method",
+            "name": "updateInputsAction",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Message's datas",
+                    "type": "Object",
+                    "props": [
+                        {
+                            "name": "camera",
+                            "description": "Camera input status",
+                            "type": "Object"
+                        },
+                        {
+                            "name": "slides",
+                            "description": "Slides input status",
+                            "type": "Object"
+                        }
+                    ]
+                },
+                {
+                    "name": "socket",
+                    "description": "The opened socket",
+                    "type": "Socket"
+                },
+                {
+                    "name": "callback",
+                    "description": "The callback to respond to the device",
+                    "type": "Function"
+                }
+            ],
+            "class": "VeoboxController",
+            "module": "controllers"
+        },
+        {
+            "file": "app\\server\\controllers\\VeoboxSocketController.js",
+            "line": 242,
+            "description": "Handles socket's connection.\n\nSocket's connection has been established with a device.",
+            "itemtype": "method",
+            "name": "connectAction",
+            "params": [
+                {
+                    "name": "socket",
+                    "description": "The socket",
+                    "type": "Socket"
+                }
+            ],
+            "class": "VeoboxController",
+            "module": "controllers"
+        },
+        {
+            "file": "app\\server\\controllers\\VeoboxSocketController.js",
+            "line": 255,
+            "description": "Handles socket's disconnection.\n\nConnection with a device has been lost.",
+            "itemtype": "method",
+            "name": "disconnectAction",
+            "params": [
+                {
+                    "name": "socket",
+                    "description": "The socket",
+                    "type": "Socket"
+                }
+            ],
+            "class": "VeoboxController",
+            "module": "controllers"
+        },
+        {
+            "file": "app\\server\\controllers\\VeoboxSocketController.js",
+            "line": 268,
+            "description": "Handles socket's connection errors.\n\nAn error occurred on socket's communication.",
+            "itemtype": "method",
+            "name": "errorAction",
+            "params": [
+                {
+                    "name": "error",
+                    "description": "The error",
+                    "type": "Error"
+                },
+                {
+                    "name": "socket",
+                    "description": "The socket",
+                    "type": "Socket"
+                }
+            ],
+            "class": "VeoboxController",
+            "module": "controllers"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\VeoboxPilot.js",
+            "line": 7,
+            "description": "Fired when a new device is connected.",
+            "itemtype": "event",
+            "name": "MESSAGES.AUTHENTICATED",
+            "params": [
+                {
+                    "name": "The",
+                    "description": "device HTTP address",
+                    "type": "String"
+                },
+                {
+                    "name": "The",
+                    "description": "id of the device",
+                    "type": "String"
+                },
+                {
+                    "name": "The",
+                    "description": "function to respond to the device",
+                    "type": "Function"
+                }
+            ],
+            "class": "VeoboxPilot",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\VeoboxPilot.js",
+            "line": 16,
+            "description": "Fired when the status of a device has been updated.",
+            "itemtype": "event",
+            "name": "MESSAGES.SESSION_STATUS_UPDATED",
+            "params": [
+                {
+                    "name": "The",
+                    "description": "new session status",
+                    "type": "String"
+                },
+                {
+                    "name": "The",
+                    "description": "id of the device",
+                    "type": "String"
+                },
+                {
+                    "name": "The",
+                    "description": "function to respond to the device",
+                    "type": "Function"
+                }
+            ],
+            "class": "VeoboxPilot",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\VeoboxPilot.js",
+            "line": 25,
+            "description": "Fired when a new recording index has been created.",
+            "itemtype": "event",
+            "name": "MESSAGES.NEW_SESSION_INDEX",
+            "params": [
+                {
+                    "name": "The",
+                    "description": "index type (\"image\" or \"tag\")",
+                    "type": "String"
+                },
+                {
+                    "name": "The",
+                    "description": "index timecode (in ms)",
+                    "type": "Number"
+                },
+                {
+                    "name": "The",
+                    "description": "index associated data",
+                    "type": "Mixed"
+                },
+                {
+                    "name": "The",
+                    "description": "function to respond to the device",
+                    "type": "Function"
+                }
+            ],
+            "class": "VeoboxPilot",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\VeoboxPilot.js",
+            "line": 35,
+            "description": "Fired when the name of a device has been updated.",
+            "itemtype": "event",
+            "name": "MESSAGES.NAME_UPDATED",
+            "params": [
+                {
+                    "name": "The",
+                    "description": "device's name",
+                    "type": "String"
+                },
+                {
+                    "name": "The",
+                    "description": "id of the device",
+                    "type": "String"
+                },
+                {
+                    "name": "The",
+                    "description": "function to respond to the device",
+                    "type": "Function"
+                }
+            ],
+            "class": "VeoboxPilot",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\VeoboxPilot.js",
+            "line": 44,
+            "description": "Fired when configured presets of a device have changed.",
+            "itemtype": "event",
+            "name": "MESSAGES.PRESETS_UPDATED",
+            "params": [
+                {
+                    "name": "The",
+                    "description": "list of configured presets",
+                    "type": "Object"
+                },
+                {
+                    "name": "The",
+                    "description": "id of the device",
+                    "type": "String"
+                },
+                {
+                    "name": "The",
+                    "description": "function to respond to the device",
+                    "type": "Function"
+                }
+            ],
+            "class": "VeoboxPilot",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\VeoboxPilot.js",
+            "line": 53,
+            "description": "Fired when storage of a device has been updated.",
+            "itemtype": "event",
+            "name": "MESSAGES.STORAGE_UPDATED",
+            "params": [
+                {
+                    "name": "Number",
+                    "description": "of free Bytes",
+                    "type": "Number"
+                },
+                {
+                    "name": "Number",
+                    "description": "of used Bytes",
+                    "type": "Number"
+                },
+                {
+                    "name": "The",
+                    "description": "id of the device",
+                    "type": "String"
+                },
+                {
+                    "name": "The",
+                    "description": "function to respond to the device",
+                    "type": "Function"
+                }
+            ],
+            "class": "VeoboxPilot",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\VeoboxPilot.js",
+            "line": 63,
+            "description": "Fired when inputs of a device have changed.",
+            "itemtype": "event",
+            "name": "MESSAGES.INPUTS_UPDATED",
+            "params": [
+                {
+                    "name": "Camera",
+                    "description": "input status",
+                    "type": "Object"
+                },
+                {
+                    "name": "Slides",
+                    "description": "input status",
+                    "type": "Object"
+                },
+                {
+                    "name": "The",
+                    "description": "id of the device",
+                    "type": "String"
+                },
+                {
+                    "name": "The",
+                    "description": "function to respond to the device",
+                    "type": "Function"
+                }
+            ],
+            "class": "VeoboxPilot",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\VeoboxPilot.js",
+            "line": 73,
+            "description": "Fired when a device has been disconnected.",
+            "itemtype": "event",
+            "name": "MESSAGES.DISCONNECTED",
+            "params": [
+                {
+                    "name": "The",
+                    "description": "id of the device",
+                    "type": "String"
+                }
+            ],
+            "class": "VeoboxPilot",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\VeoboxPilot.js",
+            "line": 80,
+            "description": "Fired when something went wrong on the connection with a device.",
+            "itemtype": "event",
+            "name": "MESSAGES.ERROR",
+            "params": [
+                {
+                    "name": "The",
+                    "description": "socket.io error",
+                    "type": "Error"
+                },
+                {
+                    "name": "The",
+                    "description": "id of the device",
+                    "type": "String"
+                }
+            ],
+            "class": "VeoboxPilot",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\VeoboxPilot.js",
+            "line": 98,
+            "description": "Asks a device.",
+            "itemtype": "method",
+            "name": "askForSettings",
+            "access": "private",
+            "tagname": "",
+            "async": 1,
+            "params": [
+                {
+                    "name": "ids",
+                    "description": "The list of devices' ids",
+                    "type": "Array"
+                },
+                {
+                    "name": "messageId",
+                    "description": "The id of the message to send to the device",
+                    "type": "String"
+                },
+                {
+                    "name": "data",
+                    "description": "Data to send to the device",
+                    "type": "Object"
+                },
+                {
+                    "name": "callback",
+                    "description": "Function to call when it's done with :\n - **Null** Always null\n - **Array** Results for each device with :\n   - **DeviceError** error An error if something went wrong\n   - **String** value The device's id",
+                    "type": "Function"
+                }
+            ],
+            "class": "VeoboxPilot",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\VeoboxPilot.js",
+            "line": 137,
+            "description": "Asks a device for its settings (status, storage, inputs and presets).",
+            "itemtype": "method",
+            "name": "askForSettings",
+            "access": "private",
+            "tagname": "",
+            "async": 1,
+            "params": [
+                {
+                    "name": "id",
+                    "description": "The device's id",
+                    "type": "String"
+                },
+                {
+                    "name": "callback",
+                    "description": "Function to call when it's done with :\n - **Error** An error if something went wrong, null otherwise",
+                    "type": "Function"
+                }
+            ],
+            "class": "VeoboxPilot",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\VeoboxPilot.js",
+            "line": 189,
+            "description": "Available messages.",
+            "itemtype": "property",
+            "name": "MESSAGES",
+            "type": "Object",
+            "final": 1,
+            "class": "VeoboxPilot",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\VeoboxPilot.js",
+            "line": 198,
+            "description": "Available statuses.",
+            "itemtype": "property",
+            "name": "STATUSES",
+            "type": "Object",
+            "final": 1,
+            "class": "VeoboxPilot",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\VeoboxPilot.js",
+            "line": 244,
+            "description": "Asks for devices' settings.\n\nAsks devices for status, storage, inputs and presets.",
+            "itemtype": "method",
+            "name": "askForSettings",
+            "async": 1,
+            "params": [
+                {
+                    "name": "ids",
+                    "description": "The list of devices' ids",
+                    "type": "Array"
+                },
+                {
+                    "name": "callback",
+                    "description": "Function to call when it's done with :\n - **Null** Always null\n - **Array** Results for each device",
+                    "type": "Function"
+                }
+            ],
+            "class": "VeoboxPilot",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\VeoboxPilot.js",
+            "line": 269,
+            "description": "Asks for devices' names.",
+            "itemtype": "method",
+            "name": "askForName",
+            "async": 1,
+            "params": [
+                {
+                    "name": "ids",
+                    "description": "The list of devices' ids",
+                    "type": "Array"
+                },
+                {
+                    "name": "callback",
+                    "description": "Function to call when it's done with :\n - **Null** Always null\n - **Array** Results for each device",
+                    "type": "Function"
+                }
+            ],
+            "class": "VeoboxPilot",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\VeoboxPilot.js",
+            "line": 283,
+            "description": "Asks a device to update its name.",
+            "itemtype": "method",
+            "name": "askForUpdateName",
+            "async": 1,
+            "params": [
+                {
+                    "name": "id",
+                    "description": "The device's id",
+                    "type": "String"
+                },
+                {
+                    "name": "name",
+                    "description": "The new name of the device",
+                    "type": "String"
+                },
+                {
+                    "name": "callback",
+                    "description": "Function to call when it's done with :\n - **DeviceError** An error if something went wrong, null otherwise",
+                    "type": "Function"
+                }
+            ],
+            "class": "VeoboxPilot",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\VeoboxPilot.js",
+            "line": 311,
+            "description": "Asks devices to start a record.",
+            "itemtype": "method",
+            "name": "askForStartRecord",
+            "async": 1,
+            "params": [
+                {
+                    "name": "ids",
+                    "description": "The list of connected devices' ids to start",
+                    "type": "Array"
+                },
+                {
+                    "name": "presetId",
+                    "description": "The id of the preset to use for the recording session",
+                    "type": "Number|Null"
+                },
+                {
+                    "name": "callback",
+                    "description": "Function to call when it's done with :\n - **Null** Always null\n - **Array** Results for each device",
+                    "type": "Function"
+                }
+            ],
+            "class": "VeoboxPilot",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\VeoboxPilot.js",
+            "line": 329,
+            "description": "Asks devices to stop recording.",
+            "itemtype": "method",
+            "name": "askForStopRecord",
+            "async": 1,
+            "params": [
+                {
+                    "name": "ids",
+                    "description": "The list of connected devices' ids to stop",
+                    "type": "Array"
+                },
+                {
+                    "name": "callback",
+                    "description": "Function to call when it's done with :\n - **Null** Always null\n - **Array** Results for each device",
+                    "type": "Function"
+                }
+            ],
+            "class": "VeoboxPilot",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\VeoboxPilot.js",
+            "line": 343,
+            "description": "Asks devices to index a record (tag).",
+            "itemtype": "method",
+            "name": "askForSessionIndex",
+            "async": 1,
+            "params": [
+                {
+                    "name": "ids",
+                    "description": "The list of connected devices' ids to index",
+                    "type": "Array"
+                },
+                {
+                    "name": "callback",
+                    "description": "Function to call when it's done with :\n - **Null** Always null\n - **Array** Results for each device",
+                    "type": "Function"
+                }
+            ],
+            "class": "VeoboxPilot",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\VeoboxPilot.js",
+            "line": 357,
+            "description": "Cuts the communication with the device.",
+            "itemtype": "method",
+            "name": "disconnect",
+            "async": 1,
+            "params": [
+                {
+                    "name": "ids",
+                    "description": "The list of connected devices' ids to disconnect",
+                    "type": "Array"
+                }
+            ],
+            "class": "VeoboxPilot",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\messages.js",
+            "line": 16,
+            "description": "A socket connection has been established with the device.",
+            "itemtype": "property",
+            "name": "CONNECTED",
+            "type": "String",
+            "default": "'connection'",
+            "final": 1,
+            "class": "VEOBOX_MESSAGES",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\messages.js",
+            "line": 26,
+            "description": "Notify a device connection.",
+            "itemtype": "property",
+            "name": "AUTHENTICATED",
+            "type": "String",
+            "default": "'hello'",
+            "final": 1,
+            "static": 1,
+            "class": "VEOBOX_MESSAGES",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\messages.js",
+            "line": 37,
+            "description": "Notify a record status change.",
+            "itemtype": "property",
+            "name": "SESSION_STATUS_UPDATED",
+            "type": "String",
+            "default": "'session.status'",
+            "final": 1,
+            "static": 1,
+            "class": "VEOBOX_MESSAGES",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\messages.js",
+            "line": 48,
+            "description": "Notify a new record index.",
+            "itemtype": "property",
+            "name": "NEW_SESSION_INDEX",
+            "type": "String",
+            "default": "'session.index'",
+            "final": 1,
+            "static": 1,
+            "class": "VEOBOX_MESSAGES",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\messages.js",
+            "line": 59,
+            "description": "Notify the human-readable name of the device.",
+            "itemtype": "property",
+            "name": "NAME_UPDATED",
+            "type": "String",
+            "default": "'settings.name'",
+            "final": 1,
+            "static": 1,
+            "class": "VEOBOX_MESSAGES",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\messages.js",
+            "line": 70,
+            "description": "Notify the configured presets and details.",
+            "itemtype": "property",
+            "name": "PRESETS_UPDATED",
+            "type": "String",
+            "default": "'settings.presets'",
+            "final": 1,
+            "static": 1,
+            "class": "VEOBOX_MESSAGES",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\messages.js",
+            "line": 81,
+            "description": "Notify the storage information.",
+            "itemtype": "property",
+            "name": "STORAGE_UPDATED",
+            "type": "String",
+            "default": "'storage'",
+            "final": 1,
+            "static": 1,
+            "class": "VEOBOX_MESSAGES",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\messages.js",
+            "line": 92,
+            "description": "Notify the inputs status.",
+            "itemtype": "property",
+            "name": "INPUTS_UPDATED",
+            "type": "String",
+            "default": "'inputs'",
+            "final": 1,
+            "static": 1,
+            "class": "VEOBOX_MESSAGES",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\messages.js",
+            "line": 103,
+            "description": "Notify device's disconnection.",
+            "itemtype": "property",
+            "name": "DISCONNECTED",
+            "type": "String",
+            "default": "'disconnect'",
+            "final": 1,
+            "static": 1,
+            "class": "VEOBOX_MESSAGES",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\messages.js",
+            "line": 114,
+            "description": "Notify a socket error while communicating with the device.",
+            "itemtype": "property",
+            "name": "ERROR",
+            "type": "String",
+            "default": "'error'",
+            "final": 1,
+            "static": 1,
+            "class": "VEOBOX_MESSAGES",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\statuses.js",
+            "line": 17,
+            "description": "Device is stopped.",
+            "itemtype": "property",
+            "name": "STOPPED",
+            "type": "String",
+            "default": "'stopped'",
+            "final": 1,
+            "static": 1,
+            "class": "VEOBOX_STATUSES",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\statuses.js",
+            "line": 28,
+            "description": "Device is on error.",
+            "itemtype": "property",
+            "name": "ERROR",
+            "type": "String",
+            "default": "'error'",
+            "final": 1,
+            "static": 1,
+            "class": "VEOBOX_STATUSES",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\statuses.js",
+            "line": 39,
+            "description": "Device is recording.",
+            "itemtype": "property",
+            "name": "STARTED",
+            "type": "String",
+            "default": "'started'",
+            "final": 1,
+            "static": 1,
+            "class": "VEOBOX_STATUSES",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\statuses.js",
+            "line": 50,
+            "description": "Device is about to start a record.",
+            "itemtype": "property",
+            "name": "STARTING",
+            "type": "String",
+            "default": "'starting'",
+            "final": 1,
+            "static": 1,
+            "class": "VEOBOX_STATUSES",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\statuses.js",
+            "line": 61,
+            "description": "Device is about to stop a record.",
+            "itemtype": "property",
+            "name": "STOPPING",
+            "type": "String",
+            "default": "'stopping'",
+            "final": 1,
+            "static": 1,
+            "class": "VEOBOX_STATUSES",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\statuses.js",
+            "line": 72,
+            "description": "Device is not connected.",
+            "itemtype": "property",
+            "name": "DISCONNECTED",
+            "type": "String",
+            "default": "'disconnected'",
+            "final": 1,
+            "static": 1,
+            "class": "VEOBOX_STATUSES",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\veobox\\statuses.js",
+            "line": 83,
+            "description": "Device status is unknown.",
+            "itemtype": "property",
+            "name": "UNKNOWN",
+            "type": "String",
+            "default": "'unknown'",
+            "final": 1,
+            "static": 1,
+            "class": "VEOBOX_STATUSES",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\DeviceError.js",
+            "line": 24,
+            "description": "The id of the device on error.",
+            "itemtype": "property",
+            "name": "deviceId",
+            "type": "String",
+            "final": 1,
+            "class": "DeviceError",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\DeviceError.js",
+            "line": 33,
+            "description": "The device error code.",
+            "itemtype": "property",
+            "name": "code",
+            "type": "String",
+            "final": 1,
+            "class": "DeviceError",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\DeviceError.js",
+            "line": 42,
+            "description": "The error message.",
+            "itemtype": "property",
+            "name": "message",
+            "type": "String",
+            "final": 1,
+            "class": "DeviceError",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\DeviceError.js",
+            "line": 51,
+            "description": "The error name.",
+            "itemtype": "property",
+            "name": "name",
+            "type": "String",
+            "final": 1,
+            "class": "DeviceError",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\DevicePilot.js",
+            "line": 28,
+            "description": "The type of devices controlled by the pilot.",
+            "itemtype": "property",
+            "name": "type",
+            "type": "Number",
+            "final": 1,
+            "class": "DevicePilot",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\factory.js",
+            "line": 16,
+            "description": "Gets an instance of a {{#crossLink \"DevicePilot\"}}{{/crossLink}} depending on the type.",
+            "itemtype": "method",
+            "name": "get",
+            "static": 1,
+            "params": [
+                {
+                    "name": "type",
+                    "description": "The device type",
+                    "type": "Number"
+                },
+                {
+                    "name": "deviceEmitter",
+                    "description": "The device emitter",
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "namespace",
+                    "description": "The socket namespace associated to the devices to pilot",
+                    "type": "Namespace"
+                }
+            ],
+            "return": {
+                "description": "The devices' pilot corresponding to the given type",
+                "type": "DevicePilot"
+            },
+            "class": "factory",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\devices\\types.js",
+            "line": 16,
+            "description": "VEOBOX type.",
+            "itemtype": "property",
+            "name": "VEOBOX",
+            "type": "Number",
+            "final": 1,
+            "static": 1,
+            "class": "TYPES",
+            "module": "devices"
+        },
+        {
+            "file": "app\\server\\DevicesApiPlugin.js",
+            "line": 23,
+            "description": "Plugin's APIs.",
+            "itemtype": "property",
+            "name": "api",
+            "type": "DevicesApiPluginApi",
+            "final": 1,
+            "class": "DevicesApiPlugin",
+            "module": "devices-api"
+        },
+        {
+            "file": "app\\server\\DevicesApiPluginApi.js",
+            "line": 29,
+            "description": "Gets devices' types.",
+            "example": [
+                "\n\n    var devicesApi = process.api.getApi('devices-api');\n    console.log(devicesApi.getDevicesTypes());"
+            ],
+            "itemtype": "method",
+            "name": "getDevicesTypes",
+            "return": {
+                "description": "The devices' types",
+                "type": "Object"
+            },
+            "class": "DevicesApiPluginApi",
+            "module": "devices-api"
+        },
+        {
+            "file": "app\\server\\DevicesApiPluginApi.js",
+            "line": 44,
+            "description": "Gets the pilot of a particular type of devices.",
+            "example": [
+                "\n\n    var devicesApi = process.api.getApi('devices-api');\n    var DEVICES_TYPES = devicesApi.getDevicesTypes();\n    var pilot = devicesApi.getPilot(DEVICES_TYPES.VEOBOX);\n\n    // Listen to messages sent by the device\n    pilot.on(pilot.MESSAGES.AUTHENTICATED, function(id, deviceIp, socketId) {\n      console.log('New device connected with id ' + id + ' and ip ' + deviceIp);\n    });"
+            ],
+            "itemtype": "method",
+            "name": "getPilot",
+            "params": [
+                {
+                    "name": "type",
+                    "description": "The type of devices associated to the pilot",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "The pilot or null if not found",
+                "type": "DevicePilot|Null"
+            },
+            "class": "DevicesApiPluginApi",
+            "module": "devices-api"
+        },
+        {
+            "file": "app\\server\\devicesPilotsManager.js",
+            "line": 21,
+            "description": "Adds a new devices' pilot to the list of pilots.",
+            "itemtype": "method",
+            "name": "add",
+            "static": 1,
+            "params": [
+                {
+                    "name": "pilot",
+                    "description": "The devices' pilot to add",
+                    "type": "DevicePilot"
+                }
+            ],
+            "class": "devicesPilotsManager",
+            "module": "devices-api"
+        },
+        {
+            "file": "app\\server\\devicesPilotsManager.js",
+            "line": 33,
+            "description": "Removes a devices' pilot from the list of pilots.",
+            "itemtype": "method",
+            "name": "remove",
+            "static": 1,
+            "params": [
+                {
+                    "name": "type",
+                    "description": "The pilot type to remove",
+                    "type": "Number"
+                }
+            ],
+            "class": "devicesPilotsManager",
+            "module": "devices-api"
+        },
+        {
+            "file": "app\\server\\devicesPilotsManager.js",
+            "line": 53,
+            "description": "Gets a pilot by its type.",
+            "itemtype": "method",
+            "name": "get",
+            "static": 1,
+            "params": [
+                {
+                    "name": "type",
+                    "description": "The type of pilot to retrieve",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "The pilot if found, null otherwise",
+                "type": "DevicePilot|Null"
+            },
+            "class": "devicesPilotsManager",
+            "module": "devices-api"
+        },
+        {
+            "file": "app\\server\\devicesPilotsManager.js",
+            "line": 69,
+            "description": "Gets the list of pilots.",
+            "itemtype": "method",
+            "name": "getAll",
+            "static": 1,
+            "return": {
+                "description": "The list of pilots",
+                "type": "Array"
+            },
+            "class": "devicesPilotsManager",
+            "module": "devices-api"
+        }
+    ],
+    "warnings": []
+}

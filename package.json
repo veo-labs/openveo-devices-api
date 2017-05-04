@@ -1,0 +1,51 @@
+{
+  "name": "@openveo/devices-api",
+  "version": "1.0.0",
+  "description": "OpenVeo Plugin to interact with external devices",
+  "keywords": [
+    "openveo",
+    "plugin",
+    "devices",
+    "socket",
+    "api"
+  ],
+  "license": "AGPL-3.0",
+  "author": "Veo-Labs <info@veo-labs.com> (http://www.veo-labs.com/)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/veo-labs/openveo-devices-api.git"
+  },
+  "dependencies": {
+    "shortid": "2.2.6",
+    "async": "2.1.4"
+  },
+  "devDependencies": {
+    "chai": "3.5.0",
+    "chai-spies": "0.7.1",
+    "grunt": "1.0.1",
+    "grunt-cli": "1.2.0",
+    "grunt-contrib-yuidoc": "1.0.0",
+    "grunt-gh-pages": "2.0.0",
+    "grunt-eslint": "19.0.0",
+    "grunt-mkdocs": "0.2.0",
+    "grunt-mocha-test": "0.13.2",
+    "mocha": "3.2.0",
+    "pre-commit": "1.2.2",
+    "yuidoc-theme-blue": "0.1.9"
+  },
+  "peerDependencies": {
+    "@openveo/core": "4.*"
+  },
+  "scripts": {
+    "eslint": "grunt eslint",
+    "mocha": "grunt mochaTest"
+  },
+  "precommit": [
+    "eslint",
+    "mocha"
+  ],
+  "engines": {
+    "node": ">=7.4.0",
+    "npm": ">=4.0.5"
+  }
+}
