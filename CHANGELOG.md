@@ -1,3 +1,7 @@
+# 1.1.0 /
+
+- Execute unit tests on Travis
+
 # 1.0.0 / 2017-05-04
 
 Initial version of the plugin.
