@@ -11,6 +11,7 @@ var DEVICES_TYPES = process.requireDevicesApi('app/server/devices/types.js');
 var VEOBOX_MESSAGES = process.requireDevicesApi('app/server/devices/veobox/messages.js');
 var VEOBOX_STATUSES = process.requireDevicesApi('app/server/devices/veobox/statuses.js');
 var AdvancedEvent = openVeoApi.emitters.AdvancedEvent;
+var fileSystem = openVeoApi.fileSystem;
 
 /**
  * Defines a socket controller to handle messages from [Veoboxes](http://www.veo-labs.com/veobox).
@@ -111,7 +112,11 @@ VeoboxController.prototype.indexSessionAction = function(data, socket, callback)
     data = openVeoApi.util.shallowValidateObject(data, {
       type: {type: 'string', required: true, in: ['image', 'tag']},
       timecode: {type: 'number', required: true},
-      data: {type: 'file', required: data.type === 'image', in: ['JPG', 'PNG', 'GIF']}
+      data: {type: 'file', required: data.type === 'image', in: [
+        fileSystem.FILE_TYPES.JPG,
+        fileSystem.FILE_TYPES.PNG,
+        fileSystem.FILE_TYPES.GIF
+      ]}
     });
   } catch (error) {
     process.logger.warn(error.message, {error: error, event: VEOBOX_MESSAGES.NEW_SESSION_INDEX});

@@ -10,6 +10,7 @@ var devicesPilotsManager = process.requireDevicesApi('app/server/devicesPilotsMa
 var DEVICES_TYPES = process.requireDevicesApi('app/server/devices/types.js');
 var VEOBOX_MESSAGES = process.requireDevicesApi('app/server/devices/veobox/messages.js');
 var VEOBOX_STATUSES = process.requireDevicesApi('app/server/devices/veobox/statuses.js');
+var fileSystem = openVeoApi.fileSystem;
 
 // VeoboxSocketController.js
 describe('VeoboxSocketController', function() {
@@ -115,7 +116,7 @@ describe('VeoboxSocketController', function() {
             assert.equal(eventName, VEOBOX_MESSAGES.NEW_SESSION_INDEX, 'Unexpected event name');
             assert.equal(type, expectedData.type, 'Unexpected type');
             assert.equal(timecode, expectedData.timecode, 'Unexpected timecode');
-            assert.strictEqual(data.type, 'JPG', 'Unexpected image type');
+            assert.strictEqual(data.type, fileSystem.FILE_TYPES.JPG, 'Unexpected image type');
             assert.instanceOf(data.file, Buffer, 'Expected image buffer');
             assert.strictEqual(socket, expectedSocket, 'Unexpected socket');
             assert.strictEqual(callback, expectedCallback, 'Unexpected callback');
