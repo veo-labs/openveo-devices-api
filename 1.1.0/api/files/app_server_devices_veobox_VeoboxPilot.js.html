@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en" class="yui-overrride">
+<head>
+    <meta charset="utf-8">
+    <title>app\server\devices\veobox\VeoboxPilot.js - OpenVeo Devices API</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            <h1 class="blue-main-title">OpenVeo Devices API</h1>
+        </div>
+        <div class="yui3-u-1-4 version project-version">
+            API Docs for: 1.1.0
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/DeviceError.html">DeviceError</a></li>
+                                <li><a href="../classes/DevicePilot.html">DevicePilot</a></li>
+                                <li><a href="../classes/DevicesApiPlugin.html">DevicesApiPlugin</a></li>
+                                <li><a href="../classes/DevicesApiPluginApi.html">DevicesApiPluginApi</a></li>
+                                <li><a href="../classes/DeviceSocketController.html">DeviceSocketController</a></li>
+                                <li><a href="../classes/devicesPilotsManager.html">devicesPilotsManager</a></li>
+                                <li><a href="../classes/factory.html">factory</a></li>
+                                <li><a href="../classes/TYPES.html">TYPES</a></li>
+                                <li><a href="../classes/VEOBOX_MESSAGES.html">VEOBOX_MESSAGES</a></li>
+                                <li><a href="../classes/VEOBOX_STATUSES.html">VEOBOX_STATUSES</a></li>
+                                <li><a href="../classes/VeoboxController.html">VeoboxController</a></li>
+                                <li><a href="../classes/VeoboxPilot.html">VeoboxPilot</a></li>
+                            </ul>
+                
+                            <ul id="api-modules" class="apis modules">
+                                <li><a href="../modules/controllers.html">controllers</a></li>
+                                <li><a href="../modules/devices.html">devices</a></li>
+                                <li><a href="../modules/devices-api.html">devices-api</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<h1 class="file-heading">File: app\server\devices\veobox\VeoboxPilot.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+&#x27;use strict&#x27;;
+
+/**
+ * @module devices
+ */
+
+/**
+ * Fired when a new device is connected.
+ *
+ * @event MESSAGES.AUTHENTICATED
+ * @param {String} The device HTTP address
+ * @param {String} The id of the device
+ * @param {Function} The function to respond to the device
+ */
+
+/**
+ * Fired when the status of a device has been updated.
+ *
+ * @event MESSAGES.SESSION_STATUS_UPDATED
+ * @param {String} The new session status
+ * @param {String} The id of the device
+ * @param {Function} The function to respond to the device
+ */
+
+/**
+ * Fired when a new recording index has been created.
+ *
+ * @event MESSAGES.NEW_SESSION_INDEX
+ * @param {String} The index type (&quot;image&quot; or &quot;tag&quot;)
+ * @param {Number} The index timecode (in ms)
+ * @param {Mixed} The index associated data
+ * @param {Function} The function to respond to the device
+ */
+
+/**
+ * Fired when the name of a device has been updated.
+ *
+ * @event MESSAGES.NAME_UPDATED
+ * @param {String} The device&#x27;s name
+ * @param {String} The id of the device
+ * @param {Function} The function to respond to the device
+ */
+
+/**
+ * Fired when configured presets of a device have changed.
+ *
+ * @event MESSAGES.PRESETS_UPDATED
+ * @param {Object} The list of configured presets
+ * @param {String} The id of the device
+ * @param {Function} The function to respond to the device
+ */
+
+/**
+ * Fired when storage of a device has been updated.
+ *
+ * @event MESSAGES.STORAGE_UPDATED
+ * @param {Number} Number of free Bytes
+ * @param {Number} Number of used Bytes
+ * @param {String} The id of the device
+ * @param {Function} The function to respond to the device
+ */
+
+/**
+ * Fired when inputs of a device have changed.
+ *
+ * @event MESSAGES.INPUTS_UPDATED
+ * @param {Object} Camera input status
+ * @param {Object} Slides input status
+ * @param {String} The id of the device
+ * @param {Function} The function to respond to the device
+ */
+
+/**
+ * Fired when a device has been disconnected.
+ *
+ * @event MESSAGES.DISCONNECTED
+ * @param {String} The id of the device
+ */
+
+/**
+ * Fired when something went wrong on the connection with a device.
+ *
+ * @event MESSAGES.ERROR
+ * @param {Error} The socket.io error
+ * @param {String} The id of the device
+ */
+
+var util = require(&#x27;util&#x27;);
+var shortid = require(&#x27;shortid&#x27;);
+var async = require(&#x27;async&#x27;);
+var Pilot = require(&#x27;@openveo/api&#x27;).socket.Pilot;
+var DevicePilot = process.requireDevicesApi(&#x27;app/server/devices/DevicePilot.js&#x27;);
+var DeviceError = process.requireDevicesApi(&#x27;app/server/devices/DeviceError.js&#x27;);
+var DEVICES_TYPES = process.requireDevicesApi(&#x27;app/server/devices/types.js&#x27;);
+var VEOBOX_MESSAGES = process.requireDevicesApi(&#x27;app/server/devices/veobox/messages.js&#x27;);
+var VEOBOX_STATUSES = process.requireDevicesApi(&#x27;app/server/devices/veobox/statuses.js&#x27;);
+
+/**
+ * Asks a device.
+ *
+ * @method askForSettings
+ * @private
+ * @async
+ * @param {Array} ids The list of devices&#x27; ids
+ * @param {String} messageId The id of the message to send to the device
+ * @param {Object} data Data to send to the device
+ * @param {Function} callback Function to call when it&#x27;s done with :
+ *  - **Null** Always null
+ *  - **Array** Results for each device with :
+ *    - **DeviceError** error An error if something went wrong
+ *    - **String** value The device&#x27;s id
+ */
+function ask(ids, name, data, callback) {
+  var self = this;
+  var actions = [];
+
+  ids.forEach(function(id) {
+    actions.push(function(callback) {
+      var device = self.getClient(id);
+
+      if (!device)
+        return callback(new DeviceError(&#x27;Device not connected&#x27;, id));
+
+      process.logger.debug(&#x27;Say &quot;&#x27; + name + &#x27;&quot; to device&#x27;, {id: id, data: data});
+      device.socket.emit(name, data, function(response) {
+        if (response &amp;&amp; response.error)
+          return callback(new DeviceError(&#x27;Asking for &quot;&#x27; + name + &#x27;&quot; failed&#x27;, id, response.error.code), id);
+
+        callback(null, id);
+      });
+    });
+  });
+
+  async.parallel(async.reflectAll(actions), callback);
+}
+
+/**
+ * Asks a device for its settings (status, storage, inputs and presets).
+ *
+ * @method askForSettings
+ * @private
+ * @async
+ * @param {String} id The device&#x27;s id
+ * @param {Function} callback Function to call when it&#x27;s done with :
+ *  - **Error** An error if something went wrong, null otherwise
+ */
+function askForSettings(id, callback) {
+  var settings = [&#x27;session.status&#x27;, &#x27;storage&#x27;, &#x27;inputs&#x27;, &#x27;settings.presets&#x27;];
+  var actions = [];
+  var device = this.getClient(id);
+
+  settings.forEach(function(setting) {
+    actions.push(function(callback) {
+      if (!device)
+        return callback(new DeviceError(&#x27;Device not connected&#x27;, id));
+
+      var data = {
+        event: setting
+      };
+
+      process.logger.debug(&#x27;Say &quot;get&quot; to device&#x27;, {id: id, data: data});
+      device.socket.emit(&#x27;get&#x27;, data, function(response) {
+        if (response &amp;&amp; response.error)
+          return callback(new DeviceError(&#x27;Getting setting &quot;&#x27; + setting + &#x27;&quot; failed&#x27;, id, response.error.code));
+
+        callback();
+      });
+    });
+  });
+
+  async.parallel(actions, callback);
+}
+
+/**
+ * Defines a pilot to interact with [Veobox devices](http://www.veo-labs.com/veobox).
+ *
+ * @class VeoboxPilot
+ * @extends DevicePilot
+ * @constructor
+ * @param {AdvancedEmitter} devicesEmitter The devices&#x27; emitter to listen to devices&#x27; messages
+ * @param {SocketNamespace} namespace The namespace associated to the devices
+ */
+function VeoboxPilot(devicesEmitter, namespace) {
+  var self = this;
+  VeoboxPilot.super_.call(this, DEVICES_TYPES.VEOBOX, devicesEmitter, namespace);
+
+  Object.defineProperties(this, {
+
+    /**
+     * Available messages.
+     *
+     * @property MESSAGES
+     * @type Object
+     * @final
+     */
+    MESSAGES: {value: VEOBOX_MESSAGES},
+
+    /**
+     * Available statuses.
+     *
+     * @property STATUSES
+     * @type Object
+     * @final
+     */
+    STATUSES: {value: VEOBOX_STATUSES}
+
+  });
+
+  // Listen to device&#x27;s disconnection
+  this.clientEmitter.on(VEOBOX_MESSAGES.DISCONNECTED, function(eventName, socket) {
+    var client = self.removeClientBySocketId(socket.id);
+
+    if (client)
+      self.emit(eventName, client.id);
+  });
+
+  // Listen to device&#x27;s connection errors
+  this.clientEmitter.on(VEOBOX_MESSAGES.ERROR, function(eventName, error, socket) {
+    var client = self.getClientBySocketId(socket.id);
+
+    if (client)
+      self.emit(eventName, error, client.id);
+  });
+
+  // Listen to device&#x27;s greeting message
+  this.clientEmitter.on(VEOBOX_MESSAGES.AUTHENTICATED, function(eventName, id, socket, callback) {
+    self.addClient(id, socket);
+    self.emit(eventName, socket.handshake.headers[&#x27;x-forwarded-for&#x27;] || socket.handshake.address, id, callback);
+  });
+
+  // Emits devices&#x27; messages
+  this.clientEmitter.on(VEOBOX_MESSAGES.CONNECTED, Pilot.prototype.emitMessageWithId.bind(this));
+  this.clientEmitter.on(VEOBOX_MESSAGES.SESSION_STATUS_UPDATED, Pilot.prototype.emitMessageWithId.bind(this));
+  this.clientEmitter.on(VEOBOX_MESSAGES.NEW_SESSION_INDEX, Pilot.prototype.emitMessageWithId.bind(this));
+  this.clientEmitter.on(VEOBOX_MESSAGES.NAME_UPDATED, Pilot.prototype.emitMessageWithId.bind(this));
+  this.clientEmitter.on(VEOBOX_MESSAGES.PRESETS_UPDATED, Pilot.prototype.emitMessageWithId.bind(this));
+  this.clientEmitter.on(VEOBOX_MESSAGES.STORAGE_UPDATED, Pilot.prototype.emitMessageWithId.bind(this));
+  this.clientEmitter.on(VEOBOX_MESSAGES.INPUTS_UPDATED, Pilot.prototype.emitMessageWithId.bind(this));
+}
+
+module.exports = VeoboxPilot;
+util.inherits(VeoboxPilot, DevicePilot);
+
+/**
+ * Asks for devices&#x27; settings.
+ *
+ * Asks devices for status, storage, inputs and presets.
+ *
+ * @method askForSettings
+ * @async
+ * @param {Array} ids The list of devices&#x27; ids
+ * @param {Function} callback Function to call when it&#x27;s done with :
+ *  - **Null** Always null
+ *  - **Array** Results for each device
+ */
+VeoboxPilot.prototype.askForSettings = function(ids, callback) {
+  var self = this;
+  var actions = [];
+
+  ids.forEach(function(id) {
+    actions.push(function(callback) {
+      askForSettings.call(self, id, callback);
+    });
+  });
+
+  async.parallel(async.reflectAll(actions), callback);
+};
+
+/**
+ * Asks for devices&#x27; names.
+ *
+ * @method askForName
+ * @async
+ * @param {Array} ids The list of devices&#x27; ids
+ * @param {Function} callback Function to call when it&#x27;s done with :
+ *  - **Null** Always null
+ *  - **Array** Results for each device
+ */
+VeoboxPilot.prototype.askForName = function(ids, callback) {
+  ask.call(this, ids, &#x27;get&#x27;, {event: &#x27;settings.name&#x27;}, callback);
+};
+
+/**
+ * Asks a device to update its name.
+ *
+ * @method askForUpdateName
+ * @async
+ * @param {String} id The device&#x27;s id
+ * @param {String} name The new name of the device
+ * @param {Function} callback Function to call when it&#x27;s done with :
+ *  - **DeviceError** An error if something went wrong, null otherwise
+ */
+VeoboxPilot.prototype.askForUpdateName = function(id, name, callback) {
+  var device = this.getClient(id);
+
+  if (!device)
+    return callback(new DeviceError(&#x27;Device not connected&#x27;, id));
+
+  var data = {
+    name: name
+  };
+  process.logger.debug(&#x27;Say &quot;settings.name&quot; to device&#x27;, {id: id, data: data});
+  device.socket.emit(&#x27;settings.name&#x27;, data, function(response) {
+    if (response &amp;&amp; response.error)
+      return callback(new DeviceError(&#x27;Updating device name failed (&#x27; + name + &#x27;)&#x27;, id, response.error.code));
+
+    callback();
+  });
+};
+
+/**
+ * Asks devices to start a record.
+ *
+ * @method askForStartRecord
+ * @async
+ * @param {Array} ids The list of connected devices&#x27; ids to start
+ * @param {Number|Null} presetId The id of the preset to use for the recording session
+ * @param {Function} callback Function to call when it&#x27;s done with :
+ *  - **Null** Always null
+ *  - **Array** Results for each device
+ */
+VeoboxPilot.prototype.askForStartRecord = function(ids, presetId, callback) {
+  ask.call(this, ids, &#x27;session.start&#x27;, {
+    id: shortid.generate(),
+    preset: (presetId) ? presetId : null
+  }, callback);
+};
+
+/**
+ * Asks devices to stop recording.
+ *
+ * @method askForStopRecord
+ * @async
+ * @param {Array} ids The list of connected devices&#x27; ids to stop
+ * @param {Function} callback Function to call when it&#x27;s done with :
+ *  - **Null** Always null
+ *  - **Array** Results for each device
+ */
+VeoboxPilot.prototype.askForStopRecord = function(ids, callback) {
+  ask.call(this, ids, &#x27;session.stop&#x27;, {}, callback);
+};
+
+/**
+ * Asks devices to index a record (tag).
+ *
+ * @method askForSessionIndex
+ * @async
+ * @param {Array} ids The list of connected devices&#x27; ids to index
+ * @param {Function} callback Function to call when it&#x27;s done with :
+ *  - **Null** Always null
+ *  - **Array** Results for each device
+ */
+VeoboxPilot.prototype.askForSessionIndex = function(ids, callback) {
+  ask.call(this, ids, &#x27;session.index&#x27;, {type: &#x27;tag&#x27;}, callback);
+};
+
+/**
+ * Cuts the communication with the device.
+ *
+ * @method disconnect
+ * @async
+ * @param {Array} ids The list of connected devices&#x27; ids to disconnect
+ */
+VeoboxPilot.prototype.disconnect = function(ids) {
+  var self = this;
+  ids.forEach(function(id) {
+    process.logger.debug(&#x27;Disconnect device&#x27;, {id: id});
+    var device = self.getClient(id);
+
+    if (device)
+      device.socket.disconnect(true);
+  });
+};
+
+    </pre>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>
