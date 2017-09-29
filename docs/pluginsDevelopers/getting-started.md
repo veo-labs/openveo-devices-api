@@ -2,7 +2,7 @@
 
 From OpenVeo root :
 
-    npm install @openveo/devices-api
+    npm install @openveo/devices-api --production
 
 # Setup your devices
 
