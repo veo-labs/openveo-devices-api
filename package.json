@@ -39,7 +39,8 @@
   },
   "scripts": {
     "eslint": "grunt eslint",
-    "mocha": "grunt mochaTest"
+    "mocha": "grunt mochaTest",
+    "postpublish": "grunt deploy-doc"
   },
   "precommit": [
     "eslint",
