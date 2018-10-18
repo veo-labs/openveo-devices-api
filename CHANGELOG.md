@@ -1,3 +1,9 @@
+# 1.2.0 / YYYY-MM-DD
+
+## NEW FEATURES
+
+- Add NPM npm-shrinkwrap.json file
+
 # 1.1.0 / 2017-09-12
 
 ## NEW FEATURES
