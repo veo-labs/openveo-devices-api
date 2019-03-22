@@ -112,12 +112,20 @@ VeoboxController.prototype.indexSessionAction = function(data, socket, callback)
     data = openVeoApi.util.shallowValidateObject(data, {
       type: {type: 'string', required: true, in: ['image', 'tag']},
       timecode: {type: 'number', required: true},
-      data: {type: 'file', required: data.type === 'image', in: [
-        fileSystem.FILE_TYPES.JPG,
-        fileSystem.FILE_TYPES.PNG,
-        fileSystem.FILE_TYPES.GIF
-      ]}
+      data: {type: 'object', required: data.type === 'image'}
     });
+
+    if (data.data) {
+      data.data = openVeoApi.util.shallowValidateObject(data.data, {
+        filename: {type: 'string', required: true},
+        binary: {type: 'file', required: true, in: [
+          fileSystem.FILE_TYPES.JPG,
+          fileSystem.FILE_TYPES.PNG,
+          fileSystem.FILE_TYPES.GIF
+        ]}
+      });
+    }
+
   } catch (error) {
     process.logger.warn(error.message, {error: error, event: VEOBOX_MESSAGES.NEW_SESSION_INDEX});
     return callback(error);
