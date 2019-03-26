@@ -1,4 +1,4 @@
-# 2.0.0 / YYYY-MM-DD
+# 2.0.0 / 2019-03-26
 
 ## BREAKING CHANGES
 
