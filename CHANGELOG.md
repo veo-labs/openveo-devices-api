@@ -4,6 +4,10 @@
 
 - Drop support for NodeJS &lt; 12.4.0 and NPM &lt; 6.9.0
 
+## DEPENDENCIES
+
+- **shortid** has been upgraded from 2.2.6 to **2.2.15**
+
 # 2.0.0 / 2019-03-26
 
 ## BREAKING CHANGES

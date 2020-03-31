@@ -232,6 +232,7 @@
       "resolved": "https://registry.npmjs.org/boom/-/boom-0.4.2.tgz",
       "integrity": "sha1-emNune1O/O+xnO9JR6PGffrukRs=",
       "dev": true,
+      "optional": true,
       "requires": {
         "hoek": "0.9.x"
       }
@@ -1684,7 +1685,8 @@
       "version": "0.9.1",
       "resolved": "https://registry.npmjs.org/hoek/-/hoek-0.9.1.tgz",
       "integrity": "sha1-PTIkYrrfB3Fup+uFuviAec3c5QU=",
-      "dev": true
+      "dev": true,
+      "optional": true
     },
     "homedir-polyfill": {
       "version": "1.0.1",
@@ -2532,6 +2534,11 @@
       "resolved": "https://registry.npmjs.org/mute-stream/-/mute-stream-0.0.7.tgz",
       "integrity": "sha1-MHXOk7whuPq0PhvE2n6BFe0ee6s=",
       "dev": true
+    },
+    "nanoid": {
+      "version": "2.1.11",
+      "resolved": "https://registry.npmjs.org/nanoid/-/nanoid-2.1.11.tgz",
+      "integrity": "sha512-s/snB+WGm6uwi0WjsZdaVcuf3KJXlfGl2LcxgwkEwJF0D/BWzVWAZW/XY4bFaiR7s0Jk3FPvlnepg1H1b1UwlA=="
     },
     "natural-compare": {
       "version": "1.4.0",
@@ -3448,9 +3455,12 @@
       }
     },
     "shortid": {
-      "version": "2.2.6",
-      "resolved": "https://registry.npmjs.org/shortid/-/shortid-2.2.6.tgz",
-      "integrity": "sha1-OrvvxsUQdM8sHx5y9iFqG0WHbXI="
+      "version": "2.2.15",
+      "resolved": "https://registry.npmjs.org/shortid/-/shortid-2.2.15.tgz",
+      "integrity": "sha512-5EaCy2mx2Jgc/Fdn9uuDuNIIfWBpzY4XIlhoqtXF6qsf+/+SGZ+FxDdX/ZsMZiWupIWNqAEmiNY4RC+LSmCeOw==",
+      "requires": {
+        "nanoid": "^2.1.0"
+      }
     },
     "signal-exit": {
       "version": "3.0.2",
