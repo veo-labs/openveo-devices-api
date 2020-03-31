@@ -20,19 +20,19 @@
     "shortid": "^2.2.15"
   },
   "devDependencies": {
-    "chai": "4.0.2",
+    "chai": "^3.2.0",
     "chai-spies": "0.7.1",
+    "flightplan": "0.6.17",
     "grunt": "1.0.1",
     "grunt-cli": "1.2.0",
     "grunt-contrib-yuidoc": "1.0.0",
-    "grunt-gh-pages": "2.0.0",
     "grunt-eslint": "19.0.0",
+    "grunt-gh-pages": "2.0.0",
     "grunt-mkdocs": "0.2.0",
     "grunt-mocha-test": "0.13.2",
     "mocha": "3.2.0",
     "pre-commit": "1.2.2",
-    "yuidoc-theme-blue": "0.1.9",
-    "flightplan": "0.6.17"
+    "yuidoc-theme-blue": "0.1.9"
   },
   "peerDependencies": {
     "@openveo/core": ">=4.1.0"

@@ -8,6 +8,7 @@
 
 - **shortid** has been upgraded from 2.2.6 to **2.2.15**
 - **async** has been upgraded from 2.1.4 to **3.2.0**
+- **chai** has been upgraded from 4.0.2 to **4.2.0**
 
 # 2.0.0 / 2019-03-26
 
