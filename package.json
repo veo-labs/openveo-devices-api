@@ -32,7 +32,7 @@
     "grunt-mocha-test": "^0.13.3",
     "mocha": "^7.1.1",
     "pre-commit": "^1.2.2",
-    "yuidoc-theme-blue": "0.1.9"
+    "yuidoc-theme-blue": "^0.1.9"
   },
   "peerDependencies": {
     "@openveo/core": ">=4.1.0"
