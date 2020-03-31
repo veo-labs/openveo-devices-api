@@ -18,6 +18,7 @@
 - **grunt-gh-pages** has been upgraded from 2.0.0 to **3.1.0**
 - **grunt-mkdocs** has been upgraded from 0.2.0 to **1.0.1**
 - **grunt-mocha-test** has been upgraded from 0.13.2 to **0.13.3**
+- **mocha** has been upgraded from 3.2.0 to **7.1.1**
 
 # 2.0.0 / 2019-03-26
 
