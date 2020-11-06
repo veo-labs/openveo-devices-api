@@ -313,7 +313,7 @@ VeoboxPilot.prototype.askForUpdateName = function(id, name, callback) {
  * @method askForStartRecord
  * @async
  * @param {Array} ids The list of connected devices' ids to start
- * @param {Number|Null} presetId The id of the preset to use for the recording session
+ * @param {Number} presetId The id of the preset to use for the recording session
  * @param {Function} callback Function to call when it's done with:
  *  - **Null** Always null
  *  - **Array** Results for each device
@@ -327,7 +327,7 @@ VeoboxPilot.prototype.askForStartRecord = function(ids, presetId, callback) {
         ('0' + date.getHours()).slice(-2) + '-' +
         ('0' + date.getMinutes()).slice(-2) + '-' +
         ('0' + date.getSeconds()).slice(-2),
-    preset: (presetId) ? presetId : null
+    preset: presetId
   };
 
   ask.call(this, ids, 'session.start', data, callback);
