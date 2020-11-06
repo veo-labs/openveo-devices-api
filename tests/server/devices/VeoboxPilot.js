@@ -265,6 +265,41 @@ describe('VeoboxPilot', function() {
         pilot[askMethod].apply(pilot, parameters);
       });
 
+      if (askMethod === 'askForStartRecord') {
+
+        it('should ask devices to start a record', function(done) {
+          var expectedPresetId = 42;
+          var date = new Date();
+          var expectedId = date.getFullYear() + '-' +
+                           ('0' + (date.getMonth() + 1)).slice(-2) + '-' +
+                           ('0' + date.getDate()).slice(-2) + '_' +
+                           ('0' + date.getHours()).slice(-2) + '-' +
+                           ('0' + date.getMinutes()).slice(-2) + '-' +
+                           ('0' + date.getSeconds()).slice(-2);
+
+          expectedSocket.emit = chai.spy(function(name, data, callback) {
+            assert.equal(data.id, expectedId, 'Wrong device 1 id');
+            assert.equal(data.preset, expectedPresetId, 'Wrong device 1 preset id');
+            callback();
+          });
+
+          expectedSocket2.emit = chai.spy(function(name, data, callback) {
+            assert.equal(data.id, expectedId, 'Wrong device 2 id');
+            assert.equal(data.preset, expectedPresetId, 'Wrong device 2 preset id');
+            callback();
+          });
+
+          pilot[askMethod]([expectedId1, expectedId2], expectedPresetId, function(error, results) {
+            assert.isNull(error, 'Unexpected error');
+            assert.equal(results.length, 2);
+            expectedSocket.emit.should.have.been.called.exactly(1);
+            expectedSocket2.emit.should.have.been.called.exactly(1);
+            done();
+          });
+        });
+
+      }
+
     });
 
   });

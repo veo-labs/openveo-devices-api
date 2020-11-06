@@ -86,7 +86,6 @@
  */
 
 var util = require('util');
-var shortid = require('shortid');
 var async = require('async');
 var Pilot = require('@openveo/api').socket.Pilot;
 var DevicePilot = process.requireDevicesApi('app/server/devices/DevicePilot.js');
@@ -315,15 +314,23 @@ VeoboxPilot.prototype.askForUpdateName = function(id, name, callback) {
  * @async
  * @param {Array} ids The list of connected devices' ids to start
  * @param {Number|Null} presetId The id of the preset to use for the recording session
- * @param {Function} callback Function to call when it's done with :
+ * @param {Function} callback Function to call when it's done with:
  *  - **Null** Always null
  *  - **Array** Results for each device
  */
 VeoboxPilot.prototype.askForStartRecord = function(ids, presetId, callback) {
-  ask.call(this, ids, 'session.start', {
-    id: shortid.generate(),
+  var date = new Date();
+  var data = {
+    id: date.getFullYear() + '-' +
+        ('0' + (date.getMonth() + 1)).slice(-2) + '-' +
+        ('0' + date.getDate()).slice(-2) + '_' +
+        ('0' + date.getHours()).slice(-2) + '-' +
+        ('0' + date.getMinutes()).slice(-2) + '-' +
+        ('0' + date.getSeconds()).slice(-2),
     preset: (presetId) ? presetId : null
-  }, callback);
+  };
+
+  ask.call(this, ids, 'session.start', data, callback);
 };
 
 /**
