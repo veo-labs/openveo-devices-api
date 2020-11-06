@@ -3,6 +3,7 @@
 ## NEW FEATURES
 
 - Generate a human readable id based on actual date and time when starting a Veobox device record
+- Add the possibility to set the name of a Veobox device record at start
 
 # 3.0.0 / 2020-05-04
 

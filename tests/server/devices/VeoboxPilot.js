@@ -197,7 +197,7 @@ describe('VeoboxPilot', function() {
   var askMethods = {
     askForSettings: {parameters: []},
     askForName: {parameters: []},
-    askForStartRecord: {parameters: [42]},
+    askForStartRecord: {parameters: [42, null]},
     askForStopRecord: {parameters: []},
     askForSessionIndex: {parameters: []}
   };
@@ -268,6 +268,7 @@ describe('VeoboxPilot', function() {
       if (askMethod === 'askForStartRecord') {
 
         it('should ask devices to start a record', function(done) {
+          var expectedName = 'Record name';
           var expectedPresetId = 42;
           var date = new Date();
           var expectedId = date.getFullYear() + '-' +
@@ -279,23 +280,48 @@ describe('VeoboxPilot', function() {
 
           expectedSocket.emit = chai.spy(function(name, data, callback) {
             assert.equal(data.id, expectedId, 'Wrong device 1 id');
+            assert.equal(data.name, expectedName, 'Wrong device 1 name');
             assert.equal(data.preset, expectedPresetId, 'Wrong device 1 preset id');
             callback();
           });
 
           expectedSocket2.emit = chai.spy(function(name, data, callback) {
             assert.equal(data.id, expectedId, 'Wrong device 2 id');
+            assert.equal(data.name, expectedName, 'Wrong device 2 name');
             assert.equal(data.preset, expectedPresetId, 'Wrong device 2 preset id');
             callback();
           });
 
-          pilot[askMethod]([expectedId1, expectedId2], expectedPresetId, function(error, results) {
+          pilot[askMethod]([expectedId1, expectedId2], expectedPresetId, expectedName, function(error, results) {
             assert.isNull(error, 'Unexpected error');
             assert.equal(results.length, 2);
             expectedSocket.emit.should.have.been.called.exactly(1);
             expectedSocket2.emit.should.have.been.called.exactly(1);
             done();
           });
+        });
+
+        it('should omit "name" property when empty', function(done) {
+          [undefined, null, ''].forEach(function(value) {
+            expectedSocket.emit = chai.spy(function(name, data, callback) {
+              assert.isUndefined(data.name, 'Unexpected device 1 name');
+              callback();
+            });
+
+            expectedSocket2.emit = chai.spy(function(name, data, callback) {
+              assert.isUndefined(data.name, 'Unexpected device 2 name');
+              callback();
+            });
+
+            pilot[askMethod]([expectedId1, expectedId2], 42, value, function(error, results) {
+              assert.isNull(error, 'Unexpected error');
+              assert.equal(results.length, 2);
+              expectedSocket.emit.should.have.been.called.exactly(1);
+              expectedSocket2.emit.should.have.been.called.exactly(1);
+            });
+          });
+
+          done();
         });
 
       }
