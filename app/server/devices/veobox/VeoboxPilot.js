@@ -87,6 +87,7 @@
 
 var util = require('util');
 var async = require('async');
+var shortid = require('shortid');
 var Pilot = require('@openveo/api').socket.Pilot;
 var DevicePilot = process.requireDevicesApi('app/server/devices/DevicePilot.js');
 var DeviceError = process.requireDevicesApi('app/server/devices/DeviceError.js');
@@ -327,7 +328,8 @@ VeoboxPilot.prototype.askForStartRecord = function(ids, presetId, name, callback
         ('0' + date.getDate()).slice(-2) + '_' +
         ('0' + date.getHours()).slice(-2) + '-' +
         ('0' + date.getMinutes()).slice(-2) + '-' +
-        ('0' + date.getSeconds()).slice(-2),
+        ('0' + date.getSeconds()).slice(-2) + '_' +
+        shortid.generate(),
     preset: presetId
   };
 

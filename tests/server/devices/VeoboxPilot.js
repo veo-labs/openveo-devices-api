@@ -279,14 +279,14 @@ describe('VeoboxPilot', function() {
                            ('0' + date.getSeconds()).slice(-2);
 
           expectedSocket.emit = chai.spy(function(name, data, callback) {
-            assert.equal(data.id, expectedId, 'Wrong device 1 id');
+            assert.match(data.id, new RegExp(expectedId + '_.+$'), 'Wrong device 1 id');
             assert.equal(data.name, expectedName, 'Wrong device 1 name');
             assert.equal(data.preset, expectedPresetId, 'Wrong device 1 preset id');
             callback();
           });
 
           expectedSocket2.emit = chai.spy(function(name, data, callback) {
-            assert.equal(data.id, expectedId, 'Wrong device 2 id');
+            assert.match(data.id, new RegExp(expectedId + '_.+$'), 'Wrong device 2 id');
             assert.equal(data.name, expectedName, 'Wrong device 2 name');
             assert.equal(data.preset, expectedPresetId, 'Wrong device 2 preset id');
             callback();
