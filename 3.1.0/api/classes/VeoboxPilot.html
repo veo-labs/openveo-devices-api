@@ -1,0 +1,1856 @@
+<!DOCTYPE html>
+<html lang="en" class="yui-overrride">
+<head>
+    <meta charset="utf-8">
+    <title>VeoboxPilot - OpenVeo Devices API</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            <h1 class="blue-main-title">OpenVeo Devices API</h1>
+        </div>
+        <div class="yui3-u-1-4 version project-version">
+            API Docs for: 3.1.0
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/DeviceError.html">DeviceError</a></li>
+                                <li><a href="../classes/DevicePilot.html">DevicePilot</a></li>
+                                <li><a href="../classes/DevicesApiPlugin.html">DevicesApiPlugin</a></li>
+                                <li><a href="../classes/DevicesApiPluginApi.html">DevicesApiPluginApi</a></li>
+                                <li><a href="../classes/DeviceSocketController.html">DeviceSocketController</a></li>
+                                <li><a href="../classes/devicesPilotsManager.html">devicesPilotsManager</a></li>
+                                <li><a href="../classes/factory.html">factory</a></li>
+                                <li><a href="../classes/TYPES.html">TYPES</a></li>
+                                <li><a href="../classes/VEOBOX_MESSAGES.html">VEOBOX_MESSAGES</a></li>
+                                <li><a href="../classes/VEOBOX_STATUSES.html">VEOBOX_STATUSES</a></li>
+                                <li><a href="../classes/VeoboxController.html">VeoboxController</a></li>
+                                <li><a href="../classes/VeoboxPilot.html">VeoboxPilot</a></li>
+                            </ul>
+                
+                            <ul id="api-modules" class="apis modules">
+                                <li><a href="../modules/controllers.html">controllers</a></li>
+                                <li><a href="../modules/devices.html">devices</a></li>
+                                <li><a href="../modules/devices-api.html">devices-api</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<h1>VeoboxPilot</h1>
+<div class="meta">
+
+        <div class="extends">
+            Extends <a href="../classes/DevicePilot.html" class="crosslink">DevicePilot</a>
+        </div>
+
+        <div class="foundat">
+            Defined in: <a href="../files/app_server_devices_veobox_VeoboxPilot.js.html#l174"><code>app&#x2F;server&#x2F;devices&#x2F;veobox&#x2F;VeoboxPilot.js:174</code></a>
+        </div>
+
+            Module: <a href="../modules/devices.html">devices</a>
+
+</div>
+
+
+<h3>Summary</h3>
+<div class="intro">
+    <p>Defines a pilot to interact with <a href="http://www.veo-labs.com/veobox">Veobox devices</a>.</p>
+
+</div>
+
+    <div class="constructor">
+        <h2>Constructor</h2>
+<div id="method_VeoboxPilot" class="method item">
+  <h3 class="blue-method-name">VeoboxPilot</h3>
+
+  <div class="meta method-meta">
+      <p>
+          Defined in
+      <a href="../files/app_server_devices_veobox_VeoboxPilot.js.html#l174"><code>app&#x2F;server&#x2F;devices&#x2F;veobox&#x2F;VeoboxPilot.js:174</code></a>
+  </p>
+
+
+
+  </div>
+
+  <h3>Syntax</h3>
+  <div class="blue-method-syntax">
+  <h3 class="name"><code>VeoboxPilot</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>devicesEmitter</code>
+                </li>
+                <li class="arg">
+                        <code>namespace</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+  </div>
+    <div class="description">
+      <h3>Summary</h3>
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">devicesEmitter</code>
+                        <span class="type">AdvancedEmitter</span>
+
+
+                    <div class="param-description">
+                        <p>The devices' emitter to listen to devices' messages</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">namespace</code>
+                        <span class="type">SocketNamespace</span>
+
+
+                    <div class="param-description">
+                        <p>The namespace associated to the devices</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+    </div>
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+            <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
+            <li class="api-class-tab events"><a href="#events">Events</a></li>
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods extends">
+                            <li class="index-item method">
+                                <a href="#method_askForName">askForName</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_askForSessionIndex">askForSessionIndex</a>
+
+                            </li>
+                            <li class="index-item method private">
+                                <a href="#method_askForSettings">askForSettings</a>
+
+                            </li>
+                            <li class="index-item method private">
+                                <a href="#method_askForSettings">askForSettings</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_askForSettings">askForSettings</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_askForStartRecord">askForStartRecord</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_askForStopRecord">askForStopRecord</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_askForUpdateName">askForUpdateName</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_disconnect">disconnect</a>
+
+                            </li>
+                    </ul>
+                </div>
+
+                <div class="index-section properties">
+                    <h3>Properties</h3>
+
+                    <ul class="index-list properties extends">
+                            <li class="index-item property">
+                                <a href="#property_MESSAGES">MESSAGES</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_STATUSES">STATUSES</a>
+
+                            </li>
+                            <li class="index-item property inherited">
+                                <a href="#property_type">type</a>
+
+                            </li>
+                    </ul>
+                </div>
+
+
+                <div class="index-section events">
+                    <h3>Events</h3>
+
+                    <ul class="index-list events extends">
+                            <li class="index-item event">
+                                <a href="#event_MESSAGES.AUTHENTICATED">MESSAGES.AUTHENTICATED</a>
+
+                            </li>
+                            <li class="index-item event">
+                                <a href="#event_MESSAGES.DISCONNECTED">MESSAGES.DISCONNECTED</a>
+
+                            </li>
+                            <li class="index-item event">
+                                <a href="#event_MESSAGES.ERROR">MESSAGES.ERROR</a>
+
+                            </li>
+                            <li class="index-item event">
+                                <a href="#event_MESSAGES.INPUTS_UPDATED">MESSAGES.INPUTS_UPDATED</a>
+
+                            </li>
+                            <li class="index-item event">
+                                <a href="#event_MESSAGES.NAME_UPDATED">MESSAGES.NAME_UPDATED</a>
+
+                            </li>
+                            <li class="index-item event">
+                                <a href="#event_MESSAGES.NEW_SESSION_INDEX">MESSAGES.NEW_SESSION_INDEX</a>
+
+                            </li>
+                            <li class="index-item event">
+                                <a href="#event_MESSAGES.PRESETS_UPDATED">MESSAGES.PRESETS_UPDATED</a>
+
+                            </li>
+                            <li class="index-item event">
+                                <a href="#event_MESSAGES.SESSION_STATUS_UPDATED">MESSAGES.SESSION_STATUS_UPDATED</a>
+
+                            </li>
+                            <li class="index-item event">
+                                <a href="#event_MESSAGES.STORAGE_UPDATED">MESSAGES.STORAGE_UPDATED</a>
+
+                            </li>
+                    </ul>
+                </div>
+        </div>
+
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+<div id="method_askForName" class="method item">
+  <h3 class="blue-method-name">askForName</h3>
+
+  <div class="meta method-meta">
+      <p>
+          Defined in
+      <a href="../files/app_server_devices_veobox_VeoboxPilot.js.html#l269"><code>app&#x2F;server&#x2F;devices&#x2F;veobox&#x2F;VeoboxPilot.js:269</code></a>
+  </p>
+
+
+
+  </div>
+
+  <h3>Syntax</h3>
+  <div class="blue-method-syntax">
+  <h3 class="name"><code>askForName</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>ids</code>
+                </li>
+                <li class="arg">
+                        <code>callback</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+        <span class="flag async">async</span>
+
+  </div>
+    <div class="description">
+      <h3>Summary</h3>
+        <p>Asks for devices' names.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">ids</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+
+
+                    <div class="param-description">
+                        <p>The list of devices' ids</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">callback</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+                    <div class="param-description">
+                        <p>Function to call when it's done with :</p>
+<ul>
+<li><strong>Null</strong> Always null</li>
+<li><strong>Array</strong> Results for each device</li>
+</ul>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_askForSessionIndex" class="method item">
+  <h3 class="blue-method-name">askForSessionIndex</h3>
+
+  <div class="meta method-meta">
+      <p>
+          Defined in
+      <a href="../files/app_server_devices_veobox_VeoboxPilot.js.html#l356"><code>app&#x2F;server&#x2F;devices&#x2F;veobox&#x2F;VeoboxPilot.js:356</code></a>
+  </p>
+
+
+
+  </div>
+
+  <h3>Syntax</h3>
+  <div class="blue-method-syntax">
+  <h3 class="name"><code>askForSessionIndex</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>ids</code>
+                </li>
+                <li class="arg">
+                        <code>callback</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+        <span class="flag async">async</span>
+
+  </div>
+    <div class="description">
+      <h3>Summary</h3>
+        <p>Asks devices to index a record (tag).</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">ids</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+
+
+                    <div class="param-description">
+                        <p>The list of connected devices' ids to index</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">callback</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+                    <div class="param-description">
+                        <p>Function to call when it's done with :</p>
+<ul>
+<li><strong>Null</strong> Always null</li>
+<li><strong>Array</strong> Results for each device</li>
+</ul>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_askForSettings" class="method item private">
+  <h3 class="blue-method-name">askForSettings</h3>
+
+  <div class="meta method-meta">
+      <p>
+          Defined in
+      <a href="../files/app_server_devices_veobox_VeoboxPilot.js.html#l98"><code>app&#x2F;server&#x2F;devices&#x2F;veobox&#x2F;VeoboxPilot.js:98</code></a>
+  </p>
+
+
+
+  </div>
+
+  <h3>Syntax</h3>
+  <div class="blue-method-syntax">
+  <h3 class="name"><code>askForSettings</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>ids</code>
+                </li>
+                <li class="arg">
+                        <code>messageId</code>
+                </li>
+                <li class="arg">
+                        <code>data</code>
+                </li>
+                <li class="arg">
+                        <code>callback</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+        <span class="flag private">private</span>
+
+
+
+
+        <span class="flag async">async</span>
+
+  </div>
+    <div class="description">
+      <h3>Summary</h3>
+        <p>Asks a device.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">ids</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+
+
+                    <div class="param-description">
+                        <p>The list of devices' ids</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">messageId</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+                    <div class="param-description">
+                        <p>The id of the message to send to the device</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">data</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+
+                    <div class="param-description">
+                        <p>Data to send to the device</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">callback</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+                    <div class="param-description">
+                        <p>Function to call when it's done with :</p>
+<ul>
+<li><strong>Null</strong> Always null</li>
+<li><strong>Array</strong> Results for each device with :
+<ul>
+<li><strong>DeviceError</strong> error An error if something went wrong</li>
+<li><strong>String</strong> value The device's id</li>
+</ul>
+</li>
+</ul>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_askForSettings" class="method item private">
+  <h3 class="blue-method-name">askForSettings</h3>
+
+  <div class="meta method-meta">
+      <p>
+          Defined in
+      <a href="../files/app_server_devices_veobox_VeoboxPilot.js.html#l137"><code>app&#x2F;server&#x2F;devices&#x2F;veobox&#x2F;VeoboxPilot.js:137</code></a>
+  </p>
+
+
+
+  </div>
+
+  <h3>Syntax</h3>
+  <div class="blue-method-syntax">
+  <h3 class="name"><code>askForSettings</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>id</code>
+                </li>
+                <li class="arg">
+                        <code>callback</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+        <span class="flag private">private</span>
+
+
+
+
+        <span class="flag async">async</span>
+
+  </div>
+    <div class="description">
+      <h3>Summary</h3>
+        <p>Asks a device for its settings (status, storage, inputs and presets).</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">id</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+                    <div class="param-description">
+                        <p>The device's id</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">callback</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+                    <div class="param-description">
+                        <p>Function to call when it's done with :</p>
+<ul>
+<li><strong>Error</strong> An error if something went wrong, null otherwise</li>
+</ul>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_askForSettings" class="method item">
+  <h3 class="blue-method-name">askForSettings</h3>
+
+  <div class="meta method-meta">
+      <p>
+          Defined in
+      <a href="../files/app_server_devices_veobox_VeoboxPilot.js.html#l244"><code>app&#x2F;server&#x2F;devices&#x2F;veobox&#x2F;VeoboxPilot.js:244</code></a>
+  </p>
+
+
+
+  </div>
+
+  <h3>Syntax</h3>
+  <div class="blue-method-syntax">
+  <h3 class="name"><code>askForSettings</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>ids</code>
+                </li>
+                <li class="arg">
+                        <code>callback</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+        <span class="flag async">async</span>
+
+  </div>
+    <div class="description">
+      <h3>Summary</h3>
+        <p>Asks for devices' settings.</p>
+<p>Asks devices for status, storage, inputs and presets.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">ids</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+
+
+                    <div class="param-description">
+                        <p>The list of devices' ids</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">callback</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+                    <div class="param-description">
+                        <p>Function to call when it's done with :</p>
+<ul>
+<li><strong>Null</strong> Always null</li>
+<li><strong>Array</strong> Results for each device</li>
+</ul>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_askForStartRecord" class="method item">
+  <h3 class="blue-method-name">askForStartRecord</h3>
+
+  <div class="meta method-meta">
+      <p>
+          Defined in
+      <a href="../files/app_server_devices_veobox_VeoboxPilot.js.html#l311"><code>app&#x2F;server&#x2F;devices&#x2F;veobox&#x2F;VeoboxPilot.js:311</code></a>
+  </p>
+
+
+
+  </div>
+
+  <h3>Syntax</h3>
+  <div class="blue-method-syntax">
+  <h3 class="name"><code>askForStartRecord</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>ids</code>
+                </li>
+                <li class="arg">
+                        <code>presetId</code>
+                </li>
+                <li class="arg">
+                        <code class="optional">[name]</code>
+                </li>
+                <li class="arg">
+                        <code>callback</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+        <span class="flag async">async</span>
+
+  </div>
+    <div class="description">
+      <h3>Summary</h3>
+        <p>Asks devices to start a record.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">ids</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+
+
+                    <div class="param-description">
+                        <p>The list of connected devices' ids to start</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">presetId</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+
+                    <div class="param-description">
+                        <p>The id of the preset to use for the recording session</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name optional">[name]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>The name of the recording session</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">callback</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+                    <div class="param-description">
+                        <p>Function to call when it's done with:</p>
+<ul>
+<li><strong>Null</strong> Always null</li>
+<li><strong>Array</strong> Results for each device</li>
+</ul>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_askForStopRecord" class="method item">
+  <h3 class="blue-method-name">askForStopRecord</h3>
+
+  <div class="meta method-meta">
+      <p>
+          Defined in
+      <a href="../files/app_server_devices_veobox_VeoboxPilot.js.html#l342"><code>app&#x2F;server&#x2F;devices&#x2F;veobox&#x2F;VeoboxPilot.js:342</code></a>
+  </p>
+
+
+
+  </div>
+
+  <h3>Syntax</h3>
+  <div class="blue-method-syntax">
+  <h3 class="name"><code>askForStopRecord</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>ids</code>
+                </li>
+                <li class="arg">
+                        <code>callback</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+        <span class="flag async">async</span>
+
+  </div>
+    <div class="description">
+      <h3>Summary</h3>
+        <p>Asks devices to stop recording.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">ids</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+
+
+                    <div class="param-description">
+                        <p>The list of connected devices' ids to stop</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">callback</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+                    <div class="param-description">
+                        <p>Function to call when it's done with :</p>
+<ul>
+<li><strong>Null</strong> Always null</li>
+<li><strong>Array</strong> Results for each device</li>
+</ul>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_askForUpdateName" class="method item">
+  <h3 class="blue-method-name">askForUpdateName</h3>
+
+  <div class="meta method-meta">
+      <p>
+          Defined in
+      <a href="../files/app_server_devices_veobox_VeoboxPilot.js.html#l283"><code>app&#x2F;server&#x2F;devices&#x2F;veobox&#x2F;VeoboxPilot.js:283</code></a>
+  </p>
+
+
+
+  </div>
+
+  <h3>Syntax</h3>
+  <div class="blue-method-syntax">
+  <h3 class="name"><code>askForUpdateName</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>id</code>
+                </li>
+                <li class="arg">
+                        <code>name</code>
+                </li>
+                <li class="arg">
+                        <code>callback</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+        <span class="flag async">async</span>
+
+  </div>
+    <div class="description">
+      <h3>Summary</h3>
+        <p>Asks a device to update its name.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">id</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+                    <div class="param-description">
+                        <p>The device's id</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+                    <div class="param-description">
+                        <p>The new name of the device</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">callback</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+                    <div class="param-description">
+                        <p>Function to call when it's done with :</p>
+<ul>
+<li><strong>DeviceError</strong> An error if something went wrong, null otherwise</li>
+</ul>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_disconnect" class="method item">
+  <h3 class="blue-method-name">disconnect</h3>
+
+  <div class="meta method-meta">
+      <p>
+          Defined in
+      <a href="../files/app_server_devices_veobox_VeoboxPilot.js.html#l370"><code>app&#x2F;server&#x2F;devices&#x2F;veobox&#x2F;VeoboxPilot.js:370</code></a>
+  </p>
+
+
+
+  </div>
+
+  <h3>Syntax</h3>
+  <div class="blue-method-syntax">
+  <h3 class="name"><code>disconnect</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>ids</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+        <span class="flag async">async</span>
+
+  </div>
+    <div class="description">
+      <h3>Summary</h3>
+        <p>Cuts the communication with the device.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">ids</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+
+
+                    <div class="param-description">
+                        <p>The list of connected devices' ids to disconnect</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+            </div>
+
+            <div id="properties" class="api-class-tabpanel">
+                <h2 class="off-left">Properties</h2>
+
+                    <div id="property_MESSAGES" class="property item">
+                    
+                      <h3 class="blue-method-name">MESSAGES</h3>
+                      <div class="meta method-meta">
+                          <p>
+                              Defined in
+                          <a href="../files/app_server_devices_veobox_VeoboxPilot.js.html#l189"><code>app&#x2F;server&#x2F;devices&#x2F;veobox&#x2F;VeoboxPilot.js:189</code></a>
+                      </p>
+                    
+                    
+                      </div>
+                    
+                      <h3>Syntax</h3>
+                      <div class="blue-method-syntax">
+                        <h3 class="name"><code>MESSAGES</code></h3>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+                    
+                    
+                            <span class="flag final">final</span>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                          <h3>Summary</h3>
+                            <p>Available messages.</p>
+                    
+                        </div>
+                    
+                    
+                    
+                    
+                    </div>
+                    <div id="property_STATUSES" class="property item">
+                    
+                      <h3 class="blue-method-name">STATUSES</h3>
+                      <div class="meta method-meta">
+                          <p>
+                              Defined in
+                          <a href="../files/app_server_devices_veobox_VeoboxPilot.js.html#l198"><code>app&#x2F;server&#x2F;devices&#x2F;veobox&#x2F;VeoboxPilot.js:198</code></a>
+                      </p>
+                    
+                    
+                      </div>
+                    
+                      <h3>Syntax</h3>
+                      <div class="blue-method-syntax">
+                        <h3 class="name"><code>STATUSES</code></h3>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+                    
+                    
+                            <span class="flag final">final</span>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                          <h3>Summary</h3>
+                            <p>Available statuses.</p>
+                    
+                        </div>
+                    
+                    
+                    
+                    
+                    </div>
+                    <div id="property_type" class="property item inherited">
+                    
+                      <h3 class="blue-method-name">type</h3>
+                      <div class="meta method-meta">
+                          <p>Inherited from
+                            <a href="../classes/DevicePilot.html#property_type">DevicePilot</a>:
+                          <a href="../files/app_server_devices_DevicePilot.js.html#l28"><code>app&#x2F;server&#x2F;devices&#x2F;DevicePilot.js:28</code></a>
+                      </p>
+                    
+                    
+                      </div>
+                    
+                      <h3>Syntax</h3>
+                      <div class="blue-method-syntax">
+                        <h3 class="name"><code>type</code></h3>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+                    
+                    
+                            <span class="flag final">final</span>
+                    
+                    
+                        </div>
+                    
+                        <div class="description">
+                          <h3>Summary</h3>
+                            The type of devices controlled by the pilot.
+                        </div>
+                    
+                    
+                    
+                    
+                    </div>
+            </div>
+
+
+            <div id="events" class="api-class-tabpanel">
+                <h2 class="off-left">Events</h2>
+
+                    <div id="event_MESSAGES.AUTHENTICATED" class="events item">
+                        <h3 class="blue-method-name">MESSAGES.AUTHENTICATED</h3>
+                    
+                      <div class="meta method-meta">
+                          <p>
+                              Defined in
+                          <a href="../files/app_server_devices_veobox_VeoboxPilot.js.html#l7"><code>app&#x2F;server&#x2F;devices&#x2F;veobox&#x2F;VeoboxPilot.js:7</code></a>
+                      </p>
+                    
+                    
+                      </div>
+                      <h3>Syntax</h3>
+                      <div class="blue-method-syntax">
+                        <h3 class="name"><code>MESSAGES.AUTHENTICATED</code></h3>
+                        <span class="type"></span>
+                    
+                    
+                    
+                    
+                    
+                      </div>
+                    
+                        <div class="description">
+                          <h3>Summary</h3>
+                            <p>Fired when a new device is connected.</p>
+                    
+                        </div>
+                    
+                            <div class="params">
+                                <h4>Event Payload:</h4>
+                    
+                                <ul class="params-list">
+                                    <li class="param">
+                                            <code class="param-name">The</code>
+                                            <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+                    
+                                        <div class="param-description">
+                                            <p>device HTTP address</p>
+                    
+                                        </div>
+                    
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name">The</code>
+                                            <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+                    
+                                        <div class="param-description">
+                                            <p>id of the device</p>
+                    
+                                        </div>
+                    
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name">The</code>
+                                            <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                    
+                    
+                                        <div class="param-description">
+                                            <p>function to respond to the device</p>
+                    
+                                        </div>
+                    
+                                    </li>
+                                </ul>
+                            </div>
+                    
+                    
+                    
+                    </div>
+                    <div id="event_MESSAGES.DISCONNECTED" class="events item">
+                        <h3 class="blue-method-name">MESSAGES.DISCONNECTED</h3>
+                    
+                      <div class="meta method-meta">
+                          <p>
+                              Defined in
+                          <a href="../files/app_server_devices_veobox_VeoboxPilot.js.html#l73"><code>app&#x2F;server&#x2F;devices&#x2F;veobox&#x2F;VeoboxPilot.js:73</code></a>
+                      </p>
+                    
+                    
+                      </div>
+                      <h3>Syntax</h3>
+                      <div class="blue-method-syntax">
+                        <h3 class="name"><code>MESSAGES.DISCONNECTED</code></h3>
+                        <span class="type"></span>
+                    
+                    
+                    
+                    
+                    
+                      </div>
+                    
+                        <div class="description">
+                          <h3>Summary</h3>
+                            <p>Fired when a device has been disconnected.</p>
+                    
+                        </div>
+                    
+                            <div class="params">
+                                <h4>Event Payload:</h4>
+                    
+                                <ul class="params-list">
+                                    <li class="param">
+                                            <code class="param-name">The</code>
+                                            <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+                    
+                                        <div class="param-description">
+                                            <p>id of the device</p>
+                    
+                                        </div>
+                    
+                                    </li>
+                                </ul>
+                            </div>
+                    
+                    
+                    
+                    </div>
+                    <div id="event_MESSAGES.ERROR" class="events item">
+                        <h3 class="blue-method-name">MESSAGES.ERROR</h3>
+                    
+                      <div class="meta method-meta">
+                          <p>
+                              Defined in
+                          <a href="../files/app_server_devices_veobox_VeoboxPilot.js.html#l80"><code>app&#x2F;server&#x2F;devices&#x2F;veobox&#x2F;VeoboxPilot.js:80</code></a>
+                      </p>
+                    
+                    
+                      </div>
+                      <h3>Syntax</h3>
+                      <div class="blue-method-syntax">
+                        <h3 class="name"><code>MESSAGES.ERROR</code></h3>
+                        <span class="type"></span>
+                    
+                    
+                    
+                    
+                    
+                      </div>
+                    
+                        <div class="description">
+                          <h3>Summary</h3>
+                            <p>Fired when something went wrong on the connection with a device.</p>
+                    
+                        </div>
+                    
+                            <div class="params">
+                                <h4>Event Payload:</h4>
+                    
+                                <ul class="params-list">
+                                    <li class="param">
+                                            <code class="param-name">The</code>
+                                            <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error" class="crosslink external" target="_blank">Error</a></span>
+                    
+                    
+                                        <div class="param-description">
+                                            <p><a href="http://socket.io">socket.io</a> error</p>
+                    
+                                        </div>
+                    
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name">The</code>
+                                            <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+                    
+                                        <div class="param-description">
+                                            <p>id of the device</p>
+                    
+                                        </div>
+                    
+                                    </li>
+                                </ul>
+                            </div>
+                    
+                    
+                    
+                    </div>
+                    <div id="event_MESSAGES.INPUTS_UPDATED" class="events item">
+                        <h3 class="blue-method-name">MESSAGES.INPUTS_UPDATED</h3>
+                    
+                      <div class="meta method-meta">
+                          <p>
+                              Defined in
+                          <a href="../files/app_server_devices_veobox_VeoboxPilot.js.html#l63"><code>app&#x2F;server&#x2F;devices&#x2F;veobox&#x2F;VeoboxPilot.js:63</code></a>
+                      </p>
+                    
+                    
+                      </div>
+                      <h3>Syntax</h3>
+                      <div class="blue-method-syntax">
+                        <h3 class="name"><code>MESSAGES.INPUTS_UPDATED</code></h3>
+                        <span class="type"></span>
+                    
+                    
+                    
+                    
+                    
+                      </div>
+                    
+                        <div class="description">
+                          <h3>Summary</h3>
+                            <p>Fired when inputs of a device have changed.</p>
+                    
+                        </div>
+                    
+                            <div class="params">
+                                <h4>Event Payload:</h4>
+                    
+                                <ul class="params-list">
+                                    <li class="param">
+                                            <code class="param-name">Camera</code>
+                                            <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+                    
+                                        <div class="param-description">
+                                            <p>input status</p>
+                    
+                                        </div>
+                    
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name">Slides</code>
+                                            <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+                    
+                                        <div class="param-description">
+                                            <p>input status</p>
+                    
+                                        </div>
+                    
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name">The</code>
+                                            <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+                    
+                                        <div class="param-description">
+                                            <p>id of the device</p>
+                    
+                                        </div>
+                    
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name">The</code>
+                                            <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                    
+                    
+                                        <div class="param-description">
+                                            <p>function to respond to the device</p>
+                    
+                                        </div>
+                    
+                                    </li>
+                                </ul>
+                            </div>
+                    
+                    
+                    
+                    </div>
+                    <div id="event_MESSAGES.NAME_UPDATED" class="events item">
+                        <h3 class="blue-method-name">MESSAGES.NAME_UPDATED</h3>
+                    
+                      <div class="meta method-meta">
+                          <p>
+                              Defined in
+                          <a href="../files/app_server_devices_veobox_VeoboxPilot.js.html#l35"><code>app&#x2F;server&#x2F;devices&#x2F;veobox&#x2F;VeoboxPilot.js:35</code></a>
+                      </p>
+                    
+                    
+                      </div>
+                      <h3>Syntax</h3>
+                      <div class="blue-method-syntax">
+                        <h3 class="name"><code>MESSAGES.NAME_UPDATED</code></h3>
+                        <span class="type"></span>
+                    
+                    
+                    
+                    
+                    
+                      </div>
+                    
+                        <div class="description">
+                          <h3>Summary</h3>
+                            <p>Fired when the name of a device has been updated.</p>
+                    
+                        </div>
+                    
+                            <div class="params">
+                                <h4>Event Payload:</h4>
+                    
+                                <ul class="params-list">
+                                    <li class="param">
+                                            <code class="param-name">The</code>
+                                            <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+                    
+                                        <div class="param-description">
+                                            <p>device's name</p>
+                    
+                                        </div>
+                    
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name">The</code>
+                                            <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+                    
+                                        <div class="param-description">
+                                            <p>id of the device</p>
+                    
+                                        </div>
+                    
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name">The</code>
+                                            <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                    
+                    
+                                        <div class="param-description">
+                                            <p>function to respond to the device</p>
+                    
+                                        </div>
+                    
+                                    </li>
+                                </ul>
+                            </div>
+                    
+                    
+                    
+                    </div>
+                    <div id="event_MESSAGES.NEW_SESSION_INDEX" class="events item">
+                        <h3 class="blue-method-name">MESSAGES.NEW_SESSION_INDEX</h3>
+                    
+                      <div class="meta method-meta">
+                          <p>
+                              Defined in
+                          <a href="../files/app_server_devices_veobox_VeoboxPilot.js.html#l25"><code>app&#x2F;server&#x2F;devices&#x2F;veobox&#x2F;VeoboxPilot.js:25</code></a>
+                      </p>
+                    
+                    
+                      </div>
+                      <h3>Syntax</h3>
+                      <div class="blue-method-syntax">
+                        <h3 class="name"><code>MESSAGES.NEW_SESSION_INDEX</code></h3>
+                        <span class="type"></span>
+                    
+                    
+                    
+                    
+                    
+                      </div>
+                    
+                        <div class="description">
+                          <h3>Summary</h3>
+                            <p>Fired when a new recording index has been created.</p>
+                    
+                        </div>
+                    
+                            <div class="params">
+                                <h4>Event Payload:</h4>
+                    
+                                <ul class="params-list">
+                                    <li class="param">
+                                            <code class="param-name">The</code>
+                                            <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+                    
+                                        <div class="param-description">
+                                            <p>index type (&quot;image&quot; or &quot;tag&quot;)</p>
+                    
+                                        </div>
+                    
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name">The</code>
+                                            <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+                    
+                                        <div class="param-description">
+                                            <p>index timecode (in ms)</p>
+                    
+                                        </div>
+                    
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name">The</code>
+                                            <span class="type">Mixed</span>
+                    
+                    
+                                        <div class="param-description">
+                                            <p>index associated data</p>
+                    
+                                        </div>
+                    
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name">The</code>
+                                            <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                    
+                    
+                                        <div class="param-description">
+                                            <p>function to respond to the device</p>
+                    
+                                        </div>
+                    
+                                    </li>
+                                </ul>
+                            </div>
+                    
+                    
+                    
+                    </div>
+                    <div id="event_MESSAGES.PRESETS_UPDATED" class="events item">
+                        <h3 class="blue-method-name">MESSAGES.PRESETS_UPDATED</h3>
+                    
+                      <div class="meta method-meta">
+                          <p>
+                              Defined in
+                          <a href="../files/app_server_devices_veobox_VeoboxPilot.js.html#l44"><code>app&#x2F;server&#x2F;devices&#x2F;veobox&#x2F;VeoboxPilot.js:44</code></a>
+                      </p>
+                    
+                    
+                      </div>
+                      <h3>Syntax</h3>
+                      <div class="blue-method-syntax">
+                        <h3 class="name"><code>MESSAGES.PRESETS_UPDATED</code></h3>
+                        <span class="type"></span>
+                    
+                    
+                    
+                    
+                    
+                      </div>
+                    
+                        <div class="description">
+                          <h3>Summary</h3>
+                            <p>Fired when configured presets of a device have changed.</p>
+                    
+                        </div>
+                    
+                            <div class="params">
+                                <h4>Event Payload:</h4>
+                    
+                                <ul class="params-list">
+                                    <li class="param">
+                                            <code class="param-name">The</code>
+                                            <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+                    
+                                        <div class="param-description">
+                                            <p>list of configured presets</p>
+                    
+                                        </div>
+                    
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name">The</code>
+                                            <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+                    
+                                        <div class="param-description">
+                                            <p>id of the device</p>
+                    
+                                        </div>
+                    
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name">The</code>
+                                            <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                    
+                    
+                                        <div class="param-description">
+                                            <p>function to respond to the device</p>
+                    
+                                        </div>
+                    
+                                    </li>
+                                </ul>
+                            </div>
+                    
+                    
+                    
+                    </div>
+                    <div id="event_MESSAGES.SESSION_STATUS_UPDATED" class="events item">
+                        <h3 class="blue-method-name">MESSAGES.SESSION_STATUS_UPDATED</h3>
+                    
+                      <div class="meta method-meta">
+                          <p>
+                              Defined in
+                          <a href="../files/app_server_devices_veobox_VeoboxPilot.js.html#l16"><code>app&#x2F;server&#x2F;devices&#x2F;veobox&#x2F;VeoboxPilot.js:16</code></a>
+                      </p>
+                    
+                    
+                      </div>
+                      <h3>Syntax</h3>
+                      <div class="blue-method-syntax">
+                        <h3 class="name"><code>MESSAGES.SESSION_STATUS_UPDATED</code></h3>
+                        <span class="type"></span>
+                    
+                    
+                    
+                    
+                    
+                      </div>
+                    
+                        <div class="description">
+                          <h3>Summary</h3>
+                            <p>Fired when the status of a device has been updated.</p>
+                    
+                        </div>
+                    
+                            <div class="params">
+                                <h4>Event Payload:</h4>
+                    
+                                <ul class="params-list">
+                                    <li class="param">
+                                            <code class="param-name">The</code>
+                                            <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+                    
+                                        <div class="param-description">
+                                            <p>new session status</p>
+                    
+                                        </div>
+                    
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name">The</code>
+                                            <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+                    
+                                        <div class="param-description">
+                                            <p>id of the device</p>
+                    
+                                        </div>
+                    
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name">The</code>
+                                            <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                    
+                    
+                                        <div class="param-description">
+                                            <p>function to respond to the device</p>
+                    
+                                        </div>
+                    
+                                    </li>
+                                </ul>
+                            </div>
+                    
+                    
+                    
+                    </div>
+                    <div id="event_MESSAGES.STORAGE_UPDATED" class="events item">
+                        <h3 class="blue-method-name">MESSAGES.STORAGE_UPDATED</h3>
+                    
+                      <div class="meta method-meta">
+                          <p>
+                              Defined in
+                          <a href="../files/app_server_devices_veobox_VeoboxPilot.js.html#l53"><code>app&#x2F;server&#x2F;devices&#x2F;veobox&#x2F;VeoboxPilot.js:53</code></a>
+                      </p>
+                    
+                    
+                      </div>
+                      <h3>Syntax</h3>
+                      <div class="blue-method-syntax">
+                        <h3 class="name"><code>MESSAGES.STORAGE_UPDATED</code></h3>
+                        <span class="type"></span>
+                    
+                    
+                    
+                    
+                    
+                      </div>
+                    
+                        <div class="description">
+                          <h3>Summary</h3>
+                            <p>Fired when storage of a device has been updated.</p>
+                    
+                        </div>
+                    
+                            <div class="params">
+                                <h4>Event Payload:</h4>
+                    
+                                <ul class="params-list">
+                                    <li class="param">
+                                            <code class="param-name">Number</code>
+                                            <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+                    
+                                        <div class="param-description">
+                                            <p>of free Bytes</p>
+                    
+                                        </div>
+                    
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name">Number</code>
+                                            <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+                    
+                                        <div class="param-description">
+                                            <p>of used Bytes</p>
+                    
+                                        </div>
+                    
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name">The</code>
+                                            <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+                    
+                                        <div class="param-description">
+                                            <p>id of the device</p>
+                    
+                                        </div>
+                    
+                                    </li>
+                                    <li class="param">
+                                            <code class="param-name">The</code>
+                                            <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                    
+                    
+                                        <div class="param-description">
+                                            <p>function to respond to the device</p>
+                    
+                                        </div>
+                    
+                                    </li>
+                                </ul>
+                            </div>
+                    
+                    
+                    
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" class="yui-overrride">
+<head>
+    <meta charset="utf-8">
+    <title>app/server/devices/veobox/messages.js - OpenVeo Devices API</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            <h1 class="blue-main-title">OpenVeo Devices API</h1>
+        </div>
+        <div class="yui3-u-1-4 version project-version">
+            API Docs for: 3.1.0
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/DeviceError.html">DeviceError</a></li>
+                                <li><a href="../classes/DevicePilot.html">DevicePilot</a></li>
+                                <li><a href="../classes/DevicesApiPlugin.html">DevicesApiPlugin</a></li>
+                                <li><a href="../classes/DevicesApiPluginApi.html">DevicesApiPluginApi</a></li>
+                                <li><a href="../classes/DeviceSocketController.html">DeviceSocketController</a></li>
+                                <li><a href="../classes/devicesPilotsManager.html">devicesPilotsManager</a></li>
+                                <li><a href="../classes/factory.html">factory</a></li>
+                                <li><a href="../classes/TYPES.html">TYPES</a></li>
+                                <li><a href="../classes/VEOBOX_MESSAGES.html">VEOBOX_MESSAGES</a></li>
+                                <li><a href="../classes/VEOBOX_STATUSES.html">VEOBOX_STATUSES</a></li>
+                                <li><a href="../classes/VeoboxController.html">VeoboxController</a></li>
+                                <li><a href="../classes/VeoboxPilot.html">VeoboxPilot</a></li>
+                            </ul>
+                
+                            <ul id="api-modules" class="apis modules">
+                                <li><a href="../modules/controllers.html">controllers</a></li>
+                                <li><a href="../modules/devices.html">devices</a></li>
+                                <li><a href="../modules/devices-api.html">devices-api</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<h1 class="file-heading">File: app/server/devices/veobox/messages.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+&#x27;use strict&#x27;;
+
+/**
+ * @module devices
+ */
+
+/**
+ * Defines the list of socket messages sent by Veobox&#x27;s devices.
+ *
+ * @class VEOBOX_MESSAGES
+ * @static
+ */
+
+var VEOBOX_MESSAGES = {
+
+  /**
+   * A socket connection has been established with the device.
+   *
+   * @property CONNECTED
+   * @type String
+   * @default &#x27;connection&#x27;
+   * @final
+   */
+  CONNECTED: &#x27;connection&#x27;,
+
+  /**
+   * Notify a device connection.
+   *
+   * @property AUTHENTICATED
+   * @type String
+   * @default &#x27;hello&#x27;
+   * @final
+   * @static
+   */
+  AUTHENTICATED: &#x27;hello&#x27;,
+
+  /**
+   * Notify a record status change.
+   *
+   * @property SESSION_STATUS_UPDATED
+   * @type String
+   * @default &#x27;session.status&#x27;
+   * @final
+   * @static
+   */
+  SESSION_STATUS_UPDATED: &#x27;session.status&#x27;,
+
+  /**
+   * Notify a new record index.
+   *
+   * @property NEW_SESSION_INDEX
+   * @type String
+   * @default &#x27;session.index&#x27;
+   * @final
+   * @static
+   */
+  NEW_SESSION_INDEX: &#x27;session.index&#x27;,
+
+  /**
+   * Notify the human-readable name of the device.
+   *
+   * @property NAME_UPDATED
+   * @type String
+   * @default &#x27;settings.name&#x27;
+   * @final
+   * @static
+   */
+  NAME_UPDATED: &#x27;settings.name&#x27;,
+
+  /**
+   * Notify the configured presets and details.
+   *
+   * @property PRESETS_UPDATED
+   * @type String
+   * @default &#x27;settings.presets&#x27;
+   * @final
+   * @static
+   */
+  PRESETS_UPDATED: &#x27;settings.presets&#x27;,
+
+  /**
+   * Notify the storage information.
+   *
+   * @property STORAGE_UPDATED
+   * @type String
+   * @default &#x27;storage&#x27;
+   * @final
+   * @static
+   */
+  STORAGE_UPDATED: &#x27;storage&#x27;,
+
+  /**
+   * Notify the inputs status.
+   *
+   * @property INPUTS_UPDATED
+   * @type String
+   * @default &#x27;inputs&#x27;
+   * @final
+   * @static
+   */
+  INPUTS_UPDATED: &#x27;inputs&#x27;,
+
+  /**
+   * Notify device&#x27;s disconnection.
+   *
+   * @property DISCONNECTED
+   * @type String
+   * @default &#x27;disconnect&#x27;
+   * @final
+   * @static
+   */
+  DISCONNECTED: &#x27;disconnect&#x27;,
+
+  /**
+   * Notify a socket error while communicating with the device.
+   *
+   * @property ERROR
+   * @type String
+   * @default &#x27;error&#x27;
+   * @final
+   * @static
+   */
+  ERROR: &#x27;error&#x27;
+
+};
+
+Object.freeze(VEOBOX_MESSAGES);
+module.exports = VEOBOX_MESSAGES;
+
+    </pre>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>
