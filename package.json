@@ -1,6 +1,6 @@
 {
   "name": "@openveo/devices-api",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "OpenVeo Plugin to interact with external devices",
   "keywords": [
     "openveo",

@@ -1,4 +1,4 @@
-# 3.1.0 / YYYY-MM-DD
+# 3.1.0 / 2020-11-19
 
 ## NEW FEATURES
 
