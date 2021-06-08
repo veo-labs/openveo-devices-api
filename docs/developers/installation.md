@@ -54,19 +54,18 @@ Your workspace should look like this:
 ├── openveo-devices-api
 ```
 
+## Install project's dependencies
+
+    cd /WORKSPACE_PATH/openveo-devices-api
+    npm ci
+
 ## Link openveo-api and openveo-test
 
 When installing OpenVeo Core we created NPM links for @openveo/api and @openveo/test. We can now refer to this links.
 
     # Install dependencies @openveo/api and @openveo/test using NPM links
     cd /WORKSPACE_PATH/openveo-devices-api
-    npm link @openveo/api
-    npm link @openveo/test
-
-## Install project's dependencies
-
-    cd /WORKSPACE_PATH/openveo-devices-api
-    npm install
+    npm link @openveo/api @openveo/test
 
 # Install plugin
 

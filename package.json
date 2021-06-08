@@ -34,9 +34,6 @@
     "pre-commit": "^1.2.2",
     "yuidoc-theme-blue": "^0.1.9"
   },
-  "peerDependencies": {
-    "@openveo/core": ">=9.0.0"
-  },
   "scripts": {
     "eslint": "grunt eslint",
     "mocha": "grunt mochaTest",
@@ -47,7 +44,7 @@
     "mocha"
   ],
   "engines": {
-    "node": ">=12.4.0",
-    "npm": ">=6.9.0"
+    "node": ">=16.3.0",
+    "npm": ">=7.15.1"
   }
 }
