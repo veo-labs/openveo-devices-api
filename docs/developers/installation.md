@@ -14,8 +14,7 @@ To install OpenVeo Devices API you first need to install OpenVeo Core if not alr
     mkdir openveo-core
 
     # Install OpenVeo core in this directory
-    cd /WORKSPACE_PATH/openveo-core
-    npm install @openveo/core
+    # See OpenVeo core documentation for more information
 
 Your workspace should look like this:
 
