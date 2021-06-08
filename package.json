@@ -35,13 +35,13 @@
     "yuidoc-theme-blue": "^0.1.9"
   },
   "scripts": {
-    "eslint": "grunt eslint",
-    "mocha": "grunt mochaTest",
-    "postpublish": "grunt deploy-doc"
+    "lint": "npx grunt eslint",
+    "test": "npx grunt mochaTest",
+    "postpublish": "npx grunt deploy-doc"
   },
   "precommit": [
-    "eslint",
-    "mocha"
+    "lint",
+    "test"
   ],
   "engines": {
     "node": ">=16.3.0",
