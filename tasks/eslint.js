@@ -5,7 +5,7 @@
 module.exports = {
 
   // Validate the whole project
-  validate: {
+  devicesApi: {
     src: [
       'index.js',
       'conf.js',
