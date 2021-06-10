@@ -5,7 +5,7 @@
 module.exports = {
 
   // Plugin's API
-  api: {
+  devicesApi: {
     name: 'OpenVeo Devices API',
     description: 'Node.js API exposed by OpenVeo Devices API Plugin',
     version: '<%= pkg.version %>',
