@@ -38,7 +38,7 @@
     "doc": "npx grunt doc",
     "lint": "npx grunt eslint",
     "test": "npx grunt mochaTest",
-    "postpublish": "npx grunt deploy-doc"
+    "postpublish": "npm run doc && npx grunt gh-pages:doc"
   },
   "precommit": [
     "lint",
