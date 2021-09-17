@@ -4,6 +4,10 @@
 
 - No longer tested on NodeJS &lt; 16.3.0 and NPM &lt; 7.15.1
 
+## DEPENDENCIES
+
+- **chai** has been upgraded from 3.2.0 to **4.3.4**
+
 # 3.1.0 / 2020-11-19
 
 ## NEW FEATURES
