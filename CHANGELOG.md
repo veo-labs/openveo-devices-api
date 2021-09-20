@@ -4,10 +4,16 @@
 
 - No longer tested on NodeJS &lt; 16.3.0 and NPM &lt; 7.15.1
 
+## NEW FEATURES
+
+- Improve code documentation by replacing Yuidoc by JSDoc
+
 ## DEPENDENCIES
 
 - **chai** has been upgraded from 3.2.0 to **4.3.4**
 - **flightplan** has been removed
+- **grunt-contrib-yuidoc** has been removed
+- **yuidoc-theme-blue** has been removed
 
 # 3.1.0 / 2020-11-19
 

@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * @module devices-api
+ * @module devices-api/DevicesApiPlugin
  */
 
 var util = require('util');
@@ -18,18 +18,23 @@ var DevicesApiPluginApi = process.requireDevicesApi('app/server/DevicesApiPlugin
 function DevicesApiPlugin() {
   DevicesApiPlugin.super_.call(this);
 
-  Object.defineProperties(this, {
+  Object.defineProperties(this,
 
-    /**
-     * Plugin's APIs.
-     *
-     * @property api
-     * @type DevicesApiPluginApi
-     * @final
-     */
-    api: {value: new DevicesApiPluginApi()}
+    /** @lends module:devices-api/DevicesApiPlugin~DevicesApiPlugin */
+    {
 
-  });
+      /**
+       * Plugin's APIs.
+       *
+       * @type {module:devices-api/DevicesApiPluginApi~DevicesApiPluginApi}
+       * @instance
+       * @readonly
+       */
+      api: {value: new DevicesApiPluginApi()}
+
+    }
+
+  );
 }
 
 // Expose DevicesApiPlugin

@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * @module controllers
+ * @module devices-api/controllers/VeoboxSocketController
  */
 
 var util = require('util');
@@ -17,10 +17,10 @@ var fileSystem = openVeoApi.fileSystem;
  * Defines a socket controller to handle messages from [Veoboxes](http://www.veo-labs.com/veobox).
  *
  * @class VeoboxController
- * @extends DeviceSocketController
+ * @extends module:devices-api/controllers/DeviceSocketController~DeviceSocketController
  * @constructor
  * @param {SocketNamespace} namespace The socket namespace managed by this controller.
- * See [OpenVeo API documentation](https://github.com/veo-labs/openveo-api) for more information about SocketNamespace
+ * @see {@link https://github.com/veo-labs/openveo-api|OpenVeo API documentation} for more information about Socket and SocketNamespace
  */
 function VeoboxController(namespace) {
   VeoboxController.super_.call(this, DEVICES_TYPES.VEOBOX, namespace);
@@ -32,7 +32,6 @@ util.inherits(VeoboxController, DeviceSocketController);
 /**
  * Handles greeting message from a device.
  *
- * @method authenticateAction
  * @param {Object} data Message's datas
  * @param {String} data.id The device unique id
  * @param {Socket} socket The opened socket
@@ -57,7 +56,6 @@ VeoboxController.prototype.authenticateAction = function(data, socket, callback)
 /**
  * Handles message informing about a device's status modification.
  *
- * @method updateSessionStatusAction
  * @param {Object} data Message's datas
  * @param {String} data.status The new session status
  * @param {Socket} socket The opened socket
@@ -96,11 +94,10 @@ VeoboxController.prototype.updateSessionStatusAction = function(data, socket, ca
 /**
  * Handles message informing about a device's session index.
  *
- * @method indexSessionAction
  * @param {Object} data Message's datas
  * @param {String} data.type The index type ("image" or "tag")
  * @param {String} data.timecode The index timecode (in ms)
- * @param {Mixed} [data.data] The index associated data (e.g. binary JPEG image for type "image")
+ * @param {*} [data.data] The index associated data (e.g. binary JPEG image for type "image")
  * @param {Socket} socket The opened socket
  * @param {Function} callback The callback to respond to the device
  */
@@ -141,7 +138,6 @@ VeoboxController.prototype.indexSessionAction = function(data, socket, callback)
  *
  * Device's name has changed.
  *
- * @method updateNameAction
  * @param {Object} data Message's datas
  * @param {String} data.name The new device's name
  * @param {Socket} socket The opened socket
@@ -168,7 +164,6 @@ VeoboxController.prototype.updateNameAction = function(data, socket, callback) {
  *
  * Device's presets have changed.
  *
- * @method updatePresetsAction
  * @param {Object} presets The new list of configured presets
  * @param {Socket} socket The opened socket
  * @param {Function} callback The callback to respond to the device
@@ -195,7 +190,6 @@ VeoboxController.prototype.updatePresetsAction = function(presets, socket, callb
 /**
  * Handles message informing about a device's storage modification.
  *
- * @method updateStorageAction
  * @param {Object} data Message's datas
  * @param {Number} data.free Number of free Bytes in device's hard drive
  * @param {Number} data.used Number of used Bytes in device's hard drive
@@ -226,7 +220,6 @@ VeoboxController.prototype.updateStorageAction = function(data, socket, callback
  *
  * Device's inputs have changed.
  *
- * @method updateInputsAction
  * @param {Object} data Message's datas
  * @param {Object} data.camera Camera input status
  * @param {Object} data.slides Slides input status
@@ -257,7 +250,6 @@ VeoboxController.prototype.updateInputsAction = function(data, socket, callback)
  *
  * Socket's connection has been established with a device.
  *
- * @method connectAction
  * @param {Socket} socket The socket
  */
 VeoboxController.prototype.connectAction = function(socket) {
@@ -270,7 +262,6 @@ VeoboxController.prototype.connectAction = function(socket) {
  *
  * Connection with a device has been lost.
  *
- * @method disconnectAction
  * @param {Socket} socket The socket
  */
 VeoboxController.prototype.disconnectAction = function(socket) {
@@ -283,7 +274,6 @@ VeoboxController.prototype.disconnectAction = function(socket) {
  *
  * An error occurred on socket's communication.
  *
- * @method errorAction
  * @param {Error} error The error
  * @param {Socket} socket The socket
  */

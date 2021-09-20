@@ -1,14 +1,12 @@
 'use strict';
 
 /**
- * @module devices
+ * @module devices-api/types
  */
 
 /**
  * Defines the list of available devices' types.
- *
- * @class TYPES
- * @static
+ * @namespace
  */
 
 var TYPES = {
@@ -16,10 +14,10 @@ var TYPES = {
   /**
    * VEOBOX type.
    *
-   * @property VEOBOX
-   * @type Number
-   * @final
-   * @static
+   * @const
+   * @type {Number}
+   * @default
+   * @inner
    */
   VEOBOX: 1
 

@@ -1,15 +1,12 @@
 'use strict';
 
 /**
- * @module devices
+ * @module devices-api/statuses
  */
 
 /**
  * Defines the list of Veobox statuses.
- *
- * @module devices
- * @class VEOBOX_STATUSES
- * @static
+ * @namespace
  */
 
 var VEOBOX_STATUSES = {
@@ -17,77 +14,70 @@ var VEOBOX_STATUSES = {
   /**
    * Device is stopped.
    *
-   * @property STOPPED
-   * @type String
-   * @default 'stopped'
-   * @final
-   * @static
+   * @const
+   * @type {String}
+   * @default
+   * @inner
    */
   STOPPED: 'stopped',
 
   /**
    * Device is on error.
    *
-   * @property ERROR
-   * @type String
-   * @default 'error'
-   * @final
-   * @static
+   * @const
+   * @type {String}
+   * @default
+   * @inner
    */
   ERROR: 'error',
 
   /**
    * Device is recording.
    *
-   * @property STARTED
-   * @type String
-   * @default 'started'
-   * @final
-   * @static
+   * @const
+   * @type {String}
+   * @default
+   * @inner
    */
   STARTED: 'started',
 
   /**
    * Device is about to start a record.
    *
-   * @property STARTING
-   * @type String
-   * @default 'starting'
-   * @final
-   * @static
+   * @const
+   * @type {String}
+   * @default
+   * @inner
    */
   STARTING: 'starting',
 
   /**
    * Device is about to stop a record.
    *
-   * @property STOPPING
-   * @type String
-   * @default 'stopping'
-   * @final
-   * @static
+   * @const
+   * @type {String}
+   * @default
+   * @inner
    */
   STOPPING: 'stopping',
 
   /**
    * Device is not connected.
    *
-   * @property DISCONNECTED
-   * @type String
-   * @default 'disconnected'
-   * @final
-   * @static
+   * @const
+   * @type {String}
+   * @default
+   * @inner
    */
   DISCONNECTED: 'disconnected',
 
   /**
    * Device status is unknown.
    *
-   * @property UNKNOWN
-   * @type String
-   * @default 'unknown'
-   * @final
-   * @static
+   * @const
+   * @type {String}
+   * @default
+   * @inner
    */
   UNKNOWN: 'unknown'
 };

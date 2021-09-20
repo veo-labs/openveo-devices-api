@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * @module controllers
+ * @module devices-api/controllers/DeviceSocketController
  */
 
 var util = require('util');
@@ -18,25 +18,30 @@ var SocketController = openVeoApi.controllers.SocketController;
  * @constructor
  * @param {Number} devicesType The type of devices associated to the controller
  * @param {SocketNamespace} namespace The socket namespace managed by this controller.
- * See [OpenVeo API documentation](https://github.com/veo-labs/openveo-api) for more information about SocketNamespace
+ * @see {@link https://github.com/veo-labs/openveo-api|OpenVeo API documentation} for more information about SocketNamespace
  */
 function DeviceSocketController(devicesType, namespace) {
   DeviceSocketController.super_.call(this, namespace);
 
-  Object.defineProperties(this, {
+  Object.defineProperties(this,
 
-    /**
-     * The devices' pilot associated to the controller.
-     *
-     * @property pilot
-     * @type DevicePilot
-     * @final
-     */
-    pilot: {
-      value: devicesPilotFactory.get(devicesType, this.emitter, this.namespace)
+    /** @lends module:devices-api/cntrollers/DeviceSocketController~DeviceSocketController */
+    {
+
+      /**
+       * The devices' pilot associated to the controller.
+       *
+       * @type {module:devices-api/DevicePilot~DevicePilot}
+       * @instance
+       * @readonly
+       */
+      pilot: {
+        value: devicesPilotFactory.get(devicesType, this.emitter, this.namespace)
+      }
+
     }
 
-  });
+  );
 
   // Add pilot to the manager
   devicesPilotsManager.add(this.pilot);

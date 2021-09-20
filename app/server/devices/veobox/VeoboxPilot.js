@@ -1,88 +1,88 @@
 'use strict';
 
 /**
- * @module devices
+ * @module devices-api/VeoboxPilot
  */
 
 /**
  * Fired when a new device is connected.
  *
- * @event MESSAGES.AUTHENTICATED
- * @param {String} The device HTTP address
- * @param {String} The id of the device
- * @param {Function} The function to respond to the device
+ * @event module:devices-api/VeoboxPilot~VeoboxPilot#AUTHENTICATED
+ * @property {String} address The device HTTP address
+ * @property {String} id The id of the device
+ * @property {Function} The function to respond to the device
  */
 
 /**
  * Fired when the status of a device has been updated.
  *
- * @event MESSAGES.SESSION_STATUS_UPDATED
- * @param {String} The new session status
- * @param {String} The id of the device
- * @param {Function} The function to respond to the device
+ * @event module:devices-api/VeoboxPilot~VeoboxPilot#SESSION_STATUS_UPDATED
+ * @property {String} status The new session status
+ * @property {String} id The id of the device
+ * @property {Function} The function to respond to the device
  */
 
 /**
  * Fired when a new recording index has been created.
  *
- * @event MESSAGES.NEW_SESSION_INDEX
- * @param {String} The index type ("image" or "tag")
- * @param {Number} The index timecode (in ms)
- * @param {Mixed} The index associated data
- * @param {Function} The function to respond to the device
+ * @event module:devices-api/VeoboxPilot~VeoboxPilot#NEW_SESSION_INDEX
+ * @property {String} type The index type ("image" or "tag")
+ * @property {Number} timecode The index timecode (in ms)
+ * @property {*} data The index associated data
+ * @property {Function} The function to respond to the device
  */
 
 /**
  * Fired when the name of a device has been updated.
  *
- * @event MESSAGES.NAME_UPDATED
- * @param {String} The device's name
- * @param {String} The id of the device
- * @param {Function} The function to respond to the device
+ * @event module:devices-api/VeoboxPilot~VeoboxPilot#NAME_UPDATED
+ * @property {String} name The device's name
+ * @property {String} id The id of the device
+ * @property {Function} The function to respond to the device
  */
 
 /**
  * Fired when configured presets of a device have changed.
  *
- * @event MESSAGES.PRESETS_UPDATED
- * @param {Object} The list of configured presets
- * @param {String} The id of the device
- * @param {Function} The function to respond to the device
+ * @event module:devices-api/VeoboxPilot~VeoboxPilot#PRESETS_UPDATED
+ * @property {Object} presets The list of configured presets
+ * @property {String} id The id of the device
+ * @property {Function} The function to respond to the device
  */
 
 /**
  * Fired when storage of a device has been updated.
  *
- * @event MESSAGES.STORAGE_UPDATED
- * @param {Number} Number of free Bytes
- * @param {Number} Number of used Bytes
- * @param {String} The id of the device
- * @param {Function} The function to respond to the device
+ * @event module:devices-api/VeoboxPilot~VeoboxPilot#STORAGE_UPDATED
+ * @property {Number} free Number of free Bytes
+ * @property {Number} used Number of used Bytes
+ * @property {String} id The id of the device
+ * @property {Function} The function to respond to the device
  */
 
 /**
  * Fired when inputs of a device have changed.
  *
- * @event MESSAGES.INPUTS_UPDATED
- * @param {Object} Camera input status
- * @param {Object} Slides input status
- * @param {String} The id of the device
- * @param {Function} The function to respond to the device
+ * @event module:devices-api/VeoboxPilot~VeoboxPilot#INPUTS_UPDATED
+ * @property {Object} cameraStatus Camera input status
+ * @property {Object} inputStatus Slides input status
+ * @property {String} id The id of the device
+ * @property {Function} The function to respond to the device
  */
 
 /**
  * Fired when a device has been disconnected.
  *
- * @event MESSAGES.DISCONNECTED
- * @param {String} The id of the device
+ * @event module:devices-api/VeoboxPilot~VeoboxPilot#DISCONNECTED
+ * @property {String} id The id of the device
  */
 
 /**
  * Fired when something went wrong on the connection with a device.
  *
- * @event MESSAGES.ERROR
- * @param {Error} The socket.io error
- * @param {String} The id of the device
+ * @event module:devices-api/VeoboxPilot~VeoboxPilot#ERROR
+ * @property {Error} error The socket.io error
+ * @property {String} id The id of the device
  */
 
 var util = require('util');
@@ -98,17 +98,14 @@ var VEOBOX_STATUSES = process.requireDevicesApi('app/server/devices/veobox/statu
 /**
  * Asks a device.
  *
- * @method askForSettings
+ * @method ask
  * @private
- * @async
+ * @memberof module:devices-api/VeoboxPilot~VeoboxPilot
+ * @this module:devices-api/VeoboxPilot~VeoboxPilot
  * @param {Array} ids The list of devices' ids
  * @param {String} messageId The id of the message to send to the device
  * @param {Object} data Data to send to the device
- * @param {Function} callback Function to call when it's done with :
- *  - **Null** Always null
- *  - **Array** Results for each device with :
- *    - **DeviceError** error An error if something went wrong
- *    - **String** value The device's id
+ * @param {module:devices-api/VeoboxPilot~VeoboxPilot~askCallback} callback Function to call when it's done
  */
 function ask(ids, name, data, callback) {
   var self = this;
@@ -139,10 +136,10 @@ function ask(ids, name, data, callback) {
  *
  * @method askForSettings
  * @private
- * @async
+ * @memberof module:devices-api/VeoboxPilot~VeoboxPilot
+ * @this module:devices-api/VeoboxPilot~VeoboxPilot
  * @param {String} id The device's id
- * @param {Function} callback Function to call when it's done with :
- *  - **Error** An error if something went wrong, null otherwise
+ * @param {callback} callback Function to call when it's done
  */
 function askForSettings(id, callback) {
   var settings = ['session.status', 'storage', 'inputs', 'settings.presets'];
@@ -175,36 +172,52 @@ function askForSettings(id, callback) {
  * Defines a pilot to interact with [Veobox devices](http://www.veo-labs.com/veobox).
  *
  * @class VeoboxPilot
- * @extends DevicePilot
+ * @extends module:devices-api/DevicePilot~DevicePilot
  * @constructor
+ * @fires module:devices-api/VeoboxPilot~VeoboxPilot#AUTHENTICATED
+ * @fires module:devices-api/VeoboxPilot~VeoboxPilot#SESSION_STATUS_UPDATED
+ * @fires module:devices-api/VeoboxPilot~VeoboxPilot#NEW_SESSION_INDEX
+ * @fires module:devices-api/VeoboxPilot~VeoboxPilot#NAME_UPDATED
+ * @fires module:devices-api/VeoboxPilot~VeoboxPilot#PRESETS_UPDATED
+ * @fires module:devices-api/VeoboxPilot~VeoboxPilot#STORAGE_UPDATED
+ * @fires module:devices-api/VeoboxPilot~VeoboxPilot#INPUTS_UPDATED
+ * @fires module:devices-api/VeoboxPilot~VeoboxPilot#DISCONNECTED
+ * @fires module:devices-api/VeoboxPilot~VeoboxPilot#ERROR
  * @param {AdvancedEmitter} devicesEmitter The devices' emitter to listen to devices' messages
  * @param {SocketNamespace} namespace The namespace associated to the devices
+ * @see {@link https://github.com/veo-labs/openveo-api|OpenVeo API documentation} for more information about AdvancedEmitter and
+ * SocketNamespace,
  */
 function VeoboxPilot(devicesEmitter, namespace) {
   var self = this;
   VeoboxPilot.super_.call(this, DEVICES_TYPES.VEOBOX, devicesEmitter, namespace);
 
-  Object.defineProperties(this, {
+  Object.defineProperties(this,
 
-    /**
-     * Available messages.
-     *
-     * @property MESSAGES
-     * @type Object
-     * @final
-     */
-    MESSAGES: {value: VEOBOX_MESSAGES},
+    /** @lends module:devices-api/VeoboxPilot~VeoboxPilot */
+    {
 
-    /**
-     * Available statuses.
-     *
-     * @property STATUSES
-     * @type Object
-     * @final
-     */
-    STATUSES: {value: VEOBOX_STATUSES}
+      /**
+       * Available messages.
+       *
+       * @type {Object}
+       * @instance
+       * @readonly
+       */
+      MESSAGES: {value: VEOBOX_MESSAGES},
 
-  });
+      /**
+       * Available statuses.
+       *
+       * @type {Object}
+       * @instance
+       * @readonly
+       */
+      STATUSES: {value: VEOBOX_STATUSES}
+
+    }
+
+  );
 
   // Listen to device's disconnection
   this.clientEmitter.on(VEOBOX_MESSAGES.DISCONNECTED, function(eventName, socket) {
@@ -246,12 +259,8 @@ util.inherits(VeoboxPilot, DevicePilot);
  *
  * Asks devices for status, storage, inputs and presets.
  *
- * @method askForSettings
- * @async
  * @param {Array} ids The list of devices' ids
- * @param {Function} callback Function to call when it's done with :
- *  - **Null** Always null
- *  - **Array** Results for each device
+ * @param {module:devices-api/VeoboxPilot~VeoboxPilot~askForSettingsCallback} callback Function to call when it's done
  */
 VeoboxPilot.prototype.askForSettings = function(ids, callback) {
   var self = this;
@@ -269,12 +278,8 @@ VeoboxPilot.prototype.askForSettings = function(ids, callback) {
 /**
  * Asks for devices' names.
  *
- * @method askForName
- * @async
  * @param {Array} ids The list of devices' ids
- * @param {Function} callback Function to call when it's done with :
- *  - **Null** Always null
- *  - **Array** Results for each device
+ * @param {module:devices-api/VeoboxPilot~VeoboxPilot~askForNameCallback} callback Function to call when it's done
  */
 VeoboxPilot.prototype.askForName = function(ids, callback) {
   ask.call(this, ids, 'get', {event: 'settings.name'}, callback);
@@ -283,12 +288,9 @@ VeoboxPilot.prototype.askForName = function(ids, callback) {
 /**
  * Asks a device to update its name.
  *
- * @method askForUpdateName
- * @async
  * @param {String} id The device's id
  * @param {String} name The new name of the device
- * @param {Function} callback Function to call when it's done with :
- *  - **DeviceError** An error if something went wrong, null otherwise
+ * @param {module:devices-api/VeoboxPilot~VeoboxPilot~askForUpdateNameCallback} callback Function to call when it's done
  */
 VeoboxPilot.prototype.askForUpdateName = function(id, name, callback) {
   var device = this.getClient(id);
@@ -311,14 +313,11 @@ VeoboxPilot.prototype.askForUpdateName = function(id, name, callback) {
 /**
  * Asks devices to start a record.
  *
- * @method askForStartRecord
- * @async
  * @param {Array} ids The list of connected devices' ids to start
  * @param {Number} presetId The id of the preset to use for the recording session
  * @param {String} [name] The name of the recording session
- * @param {Function} callback Function to call when it's done with:
- *  - **Null** Always null
- *  - **Array** Results for each device
+ * @param {module:devices-api/VeoboxPilot~VeoboxPilot~askForStartRecordCallback} callback Function to call when it's
+ * done
  */
 VeoboxPilot.prototype.askForStartRecord = function(ids, presetId, name, callback) {
   var date = new Date();
@@ -342,12 +341,8 @@ VeoboxPilot.prototype.askForStartRecord = function(ids, presetId, name, callback
 /**
  * Asks devices to stop recording.
  *
- * @method askForStopRecord
- * @async
  * @param {Array} ids The list of connected devices' ids to stop
- * @param {Function} callback Function to call when it's done with :
- *  - **Null** Always null
- *  - **Array** Results for each device
+ * @param {module:devices-api/VeoboxPilot~VeoboxPilot~askForStopRecordCallback} callback Function to call when it's done
  */
 VeoboxPilot.prototype.askForStopRecord = function(ids, callback) {
   ask.call(this, ids, 'session.stop', {}, callback);
@@ -356,12 +351,9 @@ VeoboxPilot.prototype.askForStopRecord = function(ids, callback) {
 /**
  * Asks devices to index a record (tag).
  *
- * @method askForSessionIndex
- * @async
  * @param {Array} ids The list of connected devices' ids to index
- * @param {Function} callback Function to call when it's done with :
- *  - **Null** Always null
- *  - **Array** Results for each device
+ * @param {module:devices-api/VeoboxPilot~VeoboxPilot~askForSessionIndexCallback} callback Function to call when it's
+ * done
  */
 VeoboxPilot.prototype.askForSessionIndex = function(ids, callback) {
   ask.call(this, ids, 'session.index', {type: 'tag'}, callback);
@@ -370,8 +362,6 @@ VeoboxPilot.prototype.askForSessionIndex = function(ids, callback) {
 /**
  * Cuts the communication with the device.
  *
- * @method disconnect
- * @async
  * @param {Array} ids The list of connected devices' ids to disconnect
  */
 VeoboxPilot.prototype.disconnect = function(ids) {
@@ -384,3 +374,47 @@ VeoboxPilot.prototype.disconnect = function(ids) {
       device.socket.disconnect(true);
   });
 };
+
+/**
+ * @callback module:devices-api/VeoboxPilot~VeoboxPilot~askCallback
+ * @param {null} null Always null
+ * @param {Array} results Results for each device
+ * @param {module:devices-api/DeviceError~DeviceError} results[].error An error if something went wrong
+ * @param {String} results[].value The device's id
+ */
+
+/**
+ * @callback module:devices-api/VeoboxPilot~VeoboxPilot~askForSettingsCallback
+ * @param {null} null Always null
+ * @param {Array} results Results for each device
+ */
+
+/**
+ * @callback module:devices-api/VeoboxPilot~VeoboxPilot~askForNameCallback
+ * @param {null} null Always null
+ * @param {Array} results Results for each device
+ */
+
+/**
+ * @callback module:devices-api/VeoboxPilot~VeoboxPilot~askForUpdateNameCallback
+ * @param {(module:devices-api/DeviceError~DeviceError|null)} error An error if something went wrong, null otherwise
+ */
+
+/**
+ * @callback module:devices-api/VeoboxPilot~VeoboxPilot~askForStartRecordCallback
+ * @param {null} null Always null
+ * @param {Array} results Results for each device
+ */
+
+/**
+ * @callback module:devices-api/VeoboxPilot~VeoboxPilot~askForStopRecordCallback
+ * @param {null} null Always null
+ * @param {Array} results Results for each device
+ */
+
+/**
+ * @callback module:devices-api/VeoboxPilot~VeoboxPilot~askForSessionIndexCallback
+ * @param {null} null Always null
+ * @param {Array} results Results for each device
+ */
+

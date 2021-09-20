@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * @module devices
+ * @module devices-api/DeviceError
  */
 
 var util = require('util');
@@ -19,45 +19,51 @@ var util = require('util');
 function DeviceError(message, id, code) {
   Error.captureStackTrace(this, this.constructor);
 
-  Object.defineProperties(this, {
+  Object.defineProperties(this,
 
-    /**
-     * The id of the device on error.
-     *
-     * @property deviceId
-     * @type String
-     * @final
-     */
-    deviceId: {value: id},
+    /** @lends module:devices-api/DeviceError~DeviceError */
+    {
 
-    /**
-     * The device error code.
-     *
-     * @property code
-     * @type String
-     * @final
-     */
-    code: {value: code},
+      /**
+       * The id of the device on error.
+       *
+       * @type {String}
+       * @readonly
+       * @instance
+       */
+      deviceId: {value: id},
 
-    /**
-     * The error message.
-     *
-     * @property message
-     * @type String
-     * @final
-     */
-    message: {value: message, writable: true},
+      /**
+       * The device error code.
+       *
+       * @type {String}
+       * @readonly
+       * @instance
+       */
+      code: {value: code},
 
-    /**
-     * The error name.
-     *
-     * @property name
-     * @type String
-     * @final
-     */
-    name: {value: 'DeviceError', writable: true}
+      /**
+       * The error message.
+       *
+       * @type {String}
+       * @readonly
+       * @instance
+       */
+      message: {value: message, writable: true},
 
-  });
+      /**
+       * The error name.
+       *
+       * @type {String}
+       * @readonly
+       * @instance
+       * @default "DeviceError"
+       */
+      name: {value: 'DeviceError', writable: true}
+
+    }
+
+  );
 }
 
 module.exports = DeviceError;

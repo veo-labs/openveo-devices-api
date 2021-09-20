@@ -1,14 +1,12 @@
 'use strict';
 
 /**
- * @module devices
+ * @module devices-api/messages
  */
 
 /**
  * Defines the list of socket messages sent by Veobox's devices.
- *
- * @class VEOBOX_MESSAGES
- * @static
+ * @namespace
  */
 
 var VEOBOX_MESSAGES = {
@@ -16,109 +14,100 @@ var VEOBOX_MESSAGES = {
   /**
    * A socket connection has been established with the device.
    *
-   * @property CONNECTED
-   * @type String
-   * @default 'connection'
-   * @final
+   * @const
+   * @type {String}
+   * @default
+   * @inner
    */
   CONNECTED: 'connection',
 
   /**
    * Notify a device connection.
    *
-   * @property AUTHENTICATED
-   * @type String
-   * @default 'hello'
-   * @final
-   * @static
+   * @const
+   * @type {String}
+   * @default
+   * @inner
    */
   AUTHENTICATED: 'hello',
 
   /**
    * Notify a record status change.
    *
-   * @property SESSION_STATUS_UPDATED
-   * @type String
-   * @default 'session.status'
-   * @final
-   * @static
+   * @const
+   * @type {String}
+   * @default
+   * @inner
    */
   SESSION_STATUS_UPDATED: 'session.status',
 
   /**
    * Notify a new record index.
    *
-   * @property NEW_SESSION_INDEX
-   * @type String
-   * @default 'session.index'
-   * @final
-   * @static
+   * @const
+   * @type {String}
+   * @default
+   * @inner
    */
   NEW_SESSION_INDEX: 'session.index',
 
   /**
    * Notify the human-readable name of the device.
    *
-   * @property NAME_UPDATED
-   * @type String
-   * @default 'settings.name'
-   * @final
-   * @static
+   * @const
+   * @type {String}
+   * @default
+   * @inner
    */
   NAME_UPDATED: 'settings.name',
 
   /**
    * Notify the configured presets and details.
    *
-   * @property PRESETS_UPDATED
-   * @type String
-   * @default 'settings.presets'
-   * @final
-   * @static
+   * @const
+   * @type {String}
+   * @default
+   * @inner
    */
   PRESETS_UPDATED: 'settings.presets',
 
   /**
    * Notify the storage information.
    *
-   * @property STORAGE_UPDATED
-   * @type String
-   * @default 'storage'
-   * @final
-   * @static
+   * @const
+   * @type {String}
+   * @default
+   * @inner
    */
   STORAGE_UPDATED: 'storage',
 
   /**
    * Notify the inputs status.
    *
-   * @property INPUTS_UPDATED
-   * @type String
-   * @default 'inputs'
-   * @final
-   * @static
+   * @const
+   * @type {String}
+   * @default
+   * @inner
    */
   INPUTS_UPDATED: 'inputs',
 
   /**
    * Notify device's disconnection.
    *
-   * @property DISCONNECTED
-   * @type String
-   * @default 'disconnect'
-   * @final
-   * @static
+   * @const
+   * @type {String}
+   * @default
+   * @inner
    */
   DISCONNECTED: 'disconnect',
 
   /**
    * Notify a socket error while communicating with the device.
    *
-   * @property ERROR
-   * @type String
-   * @default 'error'
-   * @final
-   * @static
+   * @const
+   * @type {String}
+   * @default
+   * @inner
    */
   ERROR: 'error'
 

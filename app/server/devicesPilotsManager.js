@@ -1,16 +1,11 @@
 'use strict';
 
 /**
- * @module devices-api
- */
-
-/**
  * Stores the list of devices' pilots.
  *
  * One pilot per type of devices.
  *
- * @class devicesPilotsManager
- * @static
+ * @module devices-api/devicesPilotsManager
  */
 
 var DevicePilot = process.requireDevicesApi('app/server/devices/DevicePilot.js');
@@ -23,7 +18,7 @@ var pilots = [];
  *
  * @method add
  * @static
- * @param {DevicePilot} pilot The devices' pilot to add
+ * @param {module:devices-api/DevicePilot~DevicePilot} pilot The devices' pilot to add
  */
 module.exports.add = function(pilot) {
   if (pilot && pilot instanceof DevicePilot && !this.get(pilot.type))
@@ -56,7 +51,7 @@ module.exports.remove = function(type) {
  * @method get
  * @static
  * @param {Number} type The type of pilot to retrieve
- * @return {DevicePilot|Null} The pilot if found, null otherwise
+ * @return {(module:devices-api/DevicePilot~DevicePilot|Null)} The pilot if found, null otherwise
  */
 module.exports.get = function(type) {
   for (var i = 0; i < pilots.length; i++)

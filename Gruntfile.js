@@ -39,16 +39,14 @@ module.exports = function(grunt) {
   grunt.initConfig(config);
   grunt.config.merge(loadConfig('./tasks'));
 
-  grunt.loadNpmTasks('grunt-contrib-yuidoc');
   grunt.loadNpmTasks('grunt-gh-pages');
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-eslint');
   grunt.loadNpmTasks('grunt-mkdocs');
 
   grunt.registerMultiTask('rename', openVeoApi.grunt.renameTask(grunt));
-  grunt.registerMultiTask('remove', openVeoApi.grunt.removeTask(grunt));
 
   // Generate documentation
-  grunt.registerTask('doc', ['remove:doc', 'mkdocs', 'yuidoc', 'rename:doc']);
+  grunt.registerTask('doc', ['mkdocs', 'rename:doc']);
 
 };

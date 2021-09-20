@@ -1,14 +1,9 @@
 'use strict';
 
 /**
- * @module devices
- */
-
-/**
  * Devices' pilot factory.
  *
- * @class factory
- * @static
+ * @module devices-api/factory
  */
 
 var DEVICES_TYPES = process.requireDevicesApi('app/server/devices/types.js');
@@ -21,7 +16,7 @@ var DEVICES_TYPES = process.requireDevicesApi('app/server/devices/types.js');
  * @param {Number} type The device type
  * @param {EventEmitter} deviceEmitter The device emitter
  * @param {Namespace} namespace The socket namespace associated to the devices to pilot
- * @return {DevicePilot} The devices' pilot corresponding to the given type
+ * @return {module:devices-api/DevicePilot~DevicePilot} The devices' pilot corresponding to the given type
  */
 module.exports.get = function(type, deviceEmitter, namespace) {
   switch (type) {
