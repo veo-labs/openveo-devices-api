@@ -13,6 +13,7 @@
 - **chai** has been upgraded from 3.2.0 to **4.3.4**
 - **flightplan** has been removed
 - **grunt-contrib-yuidoc** has been removed
+- **mocha** has been upgraded from 7.1.1 to **9.1.0**
 - **yuidoc-theme-blue** has been removed
 
 # 3.1.0 / 2020-11-19
