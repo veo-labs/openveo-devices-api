@@ -3,7 +3,6 @@
 /* eslint no-sync: 0 */
 var path = require('path');
 var fs = require('fs');
-var openVeoApi = require('@openveo/api');
 
 process.rootDevicesApi = __dirname;
 process.requireDevicesApi = function(filePath) {
@@ -42,11 +41,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-gh-pages');
   grunt.loadNpmTasks('grunt-mocha-test');
   grunt.loadNpmTasks('grunt-eslint');
-  grunt.loadNpmTasks('grunt-mkdocs');
-
-  grunt.registerMultiTask('rename', openVeoApi.grunt.renameTask(grunt));
-
-  // Generate documentation
-  grunt.registerTask('doc', ['mkdocs', 'rename:doc']);
 
 };
