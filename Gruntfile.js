@@ -38,7 +38,6 @@ module.exports = function(grunt) {
   grunt.initConfig(config);
   grunt.config.merge(loadConfig('./tasks'));
 
-  grunt.loadNpmTasks('grunt-gh-pages');
   grunt.loadNpmTasks('grunt-eslint');
 
 };
