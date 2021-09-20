@@ -11,8 +11,12 @@
 ## DEPENDENCIES
 
 - **chai** has been upgraded from 3.2.0 to **4.3.4**
+- **eslint** has been upgraded from 22.0.0 to **23.0.0**
 - **flightplan** has been removed
+- **grunt** has been removed
+- **grunt-cli** has been removed
 - **grunt-contrib-yuidoc** has been removed
+- **grunt-eslint** has been removed
 - **grunt-gh-pages** has been removed
 - **grunt-mkdocs** has been removed
 - **mocha** has been upgraded from 7.1.1 to **9.1.0**
