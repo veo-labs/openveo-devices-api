@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: controllers/VeoboxSocketController.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: controllers/VeoboxSocketController.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>'use strict';
+
+/**
+ * @module devices-api/controllers/VeoboxSocketController
+ */
+
+var util = require('util');
+var openVeoApi = require('@openveo/api');
+var DeviceSocketController = process.requireDevicesApi('app/server/controllers/DeviceSocketController.js');
+var DEVICES_TYPES = process.requireDevicesApi('app/server/devices/types.js');
+var VEOBOX_MESSAGES = process.requireDevicesApi('app/server/devices/veobox/messages.js');
+var VEOBOX_STATUSES = process.requireDevicesApi('app/server/devices/veobox/statuses.js');
+var AdvancedEvent = openVeoApi.emitters.AdvancedEvent;
+var fileSystem = openVeoApi.fileSystem;
+
+/**
+ * Defines a socket controller to handle messages from [Veoboxes](http://www.veo-labs.com/veobox).
+ *
+ * @class VeoboxController
+ * @extends module:devices-api/controllers/DeviceSocketController~DeviceSocketController
+ * @constructor
+ * @param {SocketNamespace} namespace The socket namespace managed by this controller.
+ * @see {@link https://github.com/veo-labs/openveo-api|OpenVeo API documentation} for more information about Socket and SocketNamespace
+ */
+function VeoboxController(namespace) {
+  VeoboxController.super_.call(this, DEVICES_TYPES.VEOBOX, namespace);
+}
+
+module.exports = VeoboxController;
+util.inherits(VeoboxController, DeviceSocketController);
+
+/**
+ * Handles greeting message from a device.
+ *
+ * @param {Object} data Message's datas
+ * @param {String} data.id The device unique id
+ * @param {Socket} socket The opened socket
+ * @param {Function} callback The callback to respond to the device
+ */
+VeoboxController.prototype.authenticateAction = function(data, socket, callback) {
+  process.logger.debug('Device says : ' + VEOBOX_MESSAGES.AUTHENTICATED, {data: data, ip: socket.handshake.address});
+
+  // Validate data
+  try {
+    data = openVeoApi.util.shallowValidateObject(data, {
+      id: {type: 'string', required: true}
+    });
+  } catch (error) {
+    process.logger.warn(error.message, {error: error, event: VEOBOX_MESSAGES.AUTHENTICATED});
+    return callback(error);
+  }
+
+  this.emitter.emitEvent(new AdvancedEvent(VEOBOX_MESSAGES.AUTHENTICATED, data.id, socket, callback));
+};
+
+/**
+ * Handles message informing about a device's status modification.
+ *
+ * @param {Object} data Message's datas
+ * @param {String} data.status The new session status
+ * @param {Socket} socket The opened socket
+ * @param {Function} callback The callback to respond to the device
+ */
+VeoboxController.prototype.updateSessionStatusAction = function(data, socket, callback) {
+  process.logger.debug('Device says : ' + VEOBOX_MESSAGES.SESSION_STATUS_UPDATED, {data: data});
+
+  // Validate data
+  try {
+    data = openVeoApi.util.shallowValidateObject(data, {
+      status: {
+        type: 'string',
+        required: true,
+        in: [
+          VEOBOX_STATUSES.STOPPED,
+          VEOBOX_STATUSES.ERROR,
+          VEOBOX_STATUSES.STARTED,
+          VEOBOX_STATUSES.STARTING,
+          VEOBOX_STATUSES.STOPPING,
+          VEOBOX_STATUSES.DISCONNECTED,
+          VEOBOX_STATUSES.UNKNOWN
+        ]
+      }
+    });
+  } catch (error) {
+    process.logger.warn(error.message, {error: error, event: VEOBOX_MESSAGES.SESSION_STATUS_UPDATED});
+    return callback(error);
+  }
+
+  this.emitter.emitEvent(
+    new AdvancedEvent(VEOBOX_MESSAGES.SESSION_STATUS_UPDATED, data.status, socket, callback)
+  );
+};
+
+/**
+ * Handles message informing about a device's session index.
+ *
+ * @param {Object} data Message's datas
+ * @param {String} data.type The index type ("image" or "tag")
+ * @param {String} data.timecode The index timecode (in ms)
+ * @param {*} [data.data] The index associated data (e.g. binary JPEG image for type "image")
+ * @param {Socket} socket The opened socket
+ * @param {Function} callback The callback to respond to the device
+ */
+VeoboxController.prototype.indexSessionAction = function(data, socket, callback) {
+  process.logger.debug('Device says : ' + VEOBOX_MESSAGES.NEW_SESSION_INDEX);
+
+  // Validate data
+  try {
+    data = openVeoApi.util.shallowValidateObject(data, {
+      type: {type: 'string', required: true, in: ['image', 'tag']},
+      timecode: {type: 'number', required: true},
+      data: {type: 'object', required: data.type === 'image'}
+    });
+
+    if (data.data) {
+      data.data = openVeoApi.util.shallowValidateObject(data.data, {
+        filename: {type: 'string', required: true},
+        binary: {type: 'file', required: true, in: [
+          fileSystem.FILE_TYPES.JPG,
+          fileSystem.FILE_TYPES.PNG,
+          fileSystem.FILE_TYPES.GIF
+        ]}
+      });
+    }
+
+  } catch (error) {
+    process.logger.warn(error.message, {error: error, event: VEOBOX_MESSAGES.NEW_SESSION_INDEX});
+    return callback(error);
+  }
+
+  this.emitter.emitEvent(
+    new AdvancedEvent(VEOBOX_MESSAGES.NEW_SESSION_INDEX, data.type, data.timecode, data.data, socket, callback)
+  );
+};
+
+/**
+ * Handles message informing about a device's name modification.
+ *
+ * Device's name has changed.
+ *
+ * @param {Object} data Message's datas
+ * @param {String} data.name The new device's name
+ * @param {Socket} socket The opened socket
+ * @param {Function} callback The callback to respond to the device
+ */
+VeoboxController.prototype.updateNameAction = function(data, socket, callback) {
+  process.logger.debug('Device says : ' + VEOBOX_MESSAGES.NAME_UPDATED, {data: data});
+
+  // Validate data
+  try {
+    data = openVeoApi.util.shallowValidateObject(data, {
+      name: {type: 'string', required: true}
+    });
+  } catch (error) {
+    process.logger.warn(error.message, {error: error, event: VEOBOX_MESSAGES.NAME_UPDATED});
+    return callback(error);
+  }
+
+  this.emitter.emitEvent(new AdvancedEvent(VEOBOX_MESSAGES.NAME_UPDATED, data.name, socket, callback));
+};
+
+/**
+ * Handles message informing about a device's presets modification.
+ *
+ * Device's presets have changed.
+ *
+ * @param {Object} presets The new list of configured presets
+ * @param {Socket} socket The opened socket
+ * @param {Function} callback The callback to respond to the device
+ */
+VeoboxController.prototype.updatePresetsAction = function(presets, socket, callback) {
+  var data = null;
+  process.logger.debug('Device says : ' + VEOBOX_MESSAGES.PRESETS_UPDATED, {presets: presets});
+
+  // Validate data
+  try {
+    data = openVeoApi.util.shallowValidateObject({
+      presets: presets
+    }, {
+      presets: {type: 'object', required: true}
+    });
+  } catch (error) {
+    process.logger.warn(error.message, {error: error, event: VEOBOX_MESSAGES.PRESETS_UPDATED});
+    return callback(error);
+  }
+
+  this.emitter.emitEvent(new AdvancedEvent(VEOBOX_MESSAGES.PRESETS_UPDATED, data.presets, socket, callback));
+};
+
+/**
+ * Handles message informing about a device's storage modification.
+ *
+ * @param {Object} data Message's datas
+ * @param {Number} data.free Number of free Bytes in device's hard drive
+ * @param {Number} data.used Number of used Bytes in device's hard drive
+ * @param {Socket} socket The opened socket
+ * @param {Function} callback The callback to respond to the device
+ */
+VeoboxController.prototype.updateStorageAction = function(data, socket, callback) {
+  process.logger.debug('Device says : ' + VEOBOX_MESSAGES.STORAGE_UPDATED, {data: data});
+
+  // Validate data
+  try {
+    data = openVeoApi.util.shallowValidateObject(data, {
+      free: {type: 'number', gte: 0, required: true},
+      used: {type: 'number', gte: 0, required: true}
+    });
+  } catch (error) {
+    process.logger.warn(error.message, {error: error, event: VEOBOX_MESSAGES.STORAGE_UPDATED});
+    return callback(error);
+  }
+
+  this.emitter.emitEvent(
+    new AdvancedEvent(VEOBOX_MESSAGES.STORAGE_UPDATED, data.free, data.used, socket, callback)
+  );
+};
+
+/**
+ * Handles message informing about a device's inputs modification.
+ *
+ * Device's inputs have changed.
+ *
+ * @param {Object} data Message's datas
+ * @param {Object} data.camera Camera input status
+ * @param {Object} data.slides Slides input status
+ * @param {Socket} socket The opened socket
+ * @param {Function} callback The callback to respond to the device
+ */
+VeoboxController.prototype.updateInputsAction = function(data, socket, callback) {
+  process.logger.debug('Device says : ' + VEOBOX_MESSAGES.INPUTS_UPDATED, {data: data});
+
+  // Validate data
+  try {
+    data = openVeoApi.util.shallowValidateObject(data, {
+      camera: {type: 'object', required: true},
+      slides: {type: 'object', required: true}
+    });
+  } catch (error) {
+    process.logger.warn(error.message, {error: error, event: VEOBOX_MESSAGES.INPUTS_UPDATED});
+    return callback(error);
+  }
+
+  this.emitter.emitEvent(
+    new AdvancedEvent(VEOBOX_MESSAGES.INPUTS_UPDATED, data.camera, data.slides, socket, callback)
+  );
+};
+
+/**
+ * Handles socket's connection.
+ *
+ * Socket's connection has been established with a device.
+ *
+ * @param {Socket} socket The socket
+ */
+VeoboxController.prototype.connectAction = function(socket) {
+  process.logger.info('Device connected', {socketId: socket.id});
+  this.emitter.emitEvent(new AdvancedEvent(VEOBOX_MESSAGES.CONNECTED, socket));
+};
+
+/**
+ * Handles socket's disconnection.
+ *
+ * Connection with a device has been lost.
+ *
+ * @param {Socket} socket The socket
+ */
+VeoboxController.prototype.disconnectAction = function(socket) {
+  process.logger.info('Device disconnected', {socketId: socket.id});
+  this.emitter.emitEvent(new AdvancedEvent(VEOBOX_MESSAGES.DISCONNECTED, socket));
+};
+
+/**
+ * Handles socket's connection errors.
+ *
+ * An error occurred on socket's communication.
+ *
+ * @param {Error} error The error
+ * @param {Socket} socket The socket
+ */
+VeoboxController.prototype.errorAction = function(error, socket) {
+  process.logger.error('Error in device communication', {socketId: socket.id, error: error});
+  this.emitter.emitEvent(new AdvancedEvent(VEOBOX_MESSAGES.ERROR, error, socket));
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-devices-api_controllers_DeviceSocketController.html">devices-api/controllers/DeviceSocketController</a></li><li><a href="module-devices-api_controllers_VeoboxSocketController.html">devices-api/controllers/VeoboxSocketController</a></li><li><a href="module-devices-api_DeviceError.html">devices-api/DeviceError</a></li><li><a href="module-devices-api_DevicePilot.html">devices-api/DevicePilot</a></li><li><a href="module-devices-api_DevicesApiPlugin.html">devices-api/DevicesApiPlugin</a></li><li><a href="module-devices-api_DevicesApiPluginApi.html">devices-api/DevicesApiPluginApi</a></li><li><a href="module-devices-api_devicesPilotsManager.html">devices-api/devicesPilotsManager</a></li><li><a href="module-devices-api_factory.html">devices-api/factory</a></li><li><a href="module-devices-api_messages.html">devices-api/messages</a></li><li><a href="module-devices-api_statuses.html">devices-api/statuses</a></li><li><a href="module-devices-api_types.html">devices-api/types</a></li><li><a href="module-devices-api_VeoboxPilot.html">devices-api/VeoboxPilot</a></li></ul><h3>Namespaces</h3><ul><li><a href="module-devices-api_messages-VEOBOX_MESSAGES.html">devices-api/messages~VEOBOX_MESSAGES</a></li><li><a href="module-devices-api_statuses-VEOBOX_STATUSES.html">devices-api/statuses~VEOBOX_STATUSES</a></li><li><a href="module-devices-api_types-TYPES.html">devices-api/types~TYPES</a></li></ul><h3>Classes</h3><ul><li><a href="module-devices-api_controllers_DeviceSocketController-DeviceSocketController.html">devices-api/controllers/DeviceSocketController~DeviceSocketController</a></li><li><a href="module-devices-api_controllers_VeoboxSocketController-VeoboxController.html">devices-api/controllers/VeoboxSocketController~VeoboxController</a></li><li><a href="module-devices-api_DeviceError-DeviceError.html">devices-api/DeviceError~DeviceError</a></li><li><a href="module-devices-api_DevicePilot-DevicePilot.html">devices-api/DevicePilot~DevicePilot</a></li><li><a href="module-devices-api_DevicesApiPluginApi-DevicesApiPluginApi.html">devices-api/DevicesApiPluginApi~DevicesApiPluginApi</a></li><li><a href="module-devices-api_DevicesApiPlugin-DevicesApiPlugin.html">devices-api/DevicesApiPlugin~DevicesApiPlugin</a></li><li><a href="module-devices-api_VeoboxPilot-VeoboxPilot.html">devices-api/VeoboxPilot~VeoboxPilot</a></li></ul><h3>Events</h3><ul><li><a href="module-devices-api_VeoboxPilot-VeoboxPilot.html#event:AUTHENTICATED">devices-api/VeoboxPilot~VeoboxPilot#AUTHENTICATED</a></li><li><a href="module-devices-api_VeoboxPilot-VeoboxPilot.html#event:DISCONNECTED">devices-api/VeoboxPilot~VeoboxPilot#DISCONNECTED</a></li><li><a href="module-devices-api_VeoboxPilot-VeoboxPilot.html#event:ERROR">devices-api/VeoboxPilot~VeoboxPilot#ERROR</a></li><li><a href="module-devices-api_VeoboxPilot-VeoboxPilot.html#event:INPUTS_UPDATED">devices-api/VeoboxPilot~VeoboxPilot#INPUTS_UPDATED</a></li><li><a href="module-devices-api_VeoboxPilot-VeoboxPilot.html#event:NAME_UPDATED">devices-api/VeoboxPilot~VeoboxPilot#NAME_UPDATED</a></li><li><a href="module-devices-api_VeoboxPilot-VeoboxPilot.html#event:NEW_SESSION_INDEX">devices-api/VeoboxPilot~VeoboxPilot#NEW_SESSION_INDEX</a></li><li><a href="module-devices-api_VeoboxPilot-VeoboxPilot.html#event:PRESETS_UPDATED">devices-api/VeoboxPilot~VeoboxPilot#PRESETS_UPDATED</a></li><li><a href="module-devices-api_VeoboxPilot-VeoboxPilot.html#event:SESSION_STATUS_UPDATED">devices-api/VeoboxPilot~VeoboxPilot#SESSION_STATUS_UPDATED</a></li><li><a href="module-devices-api_VeoboxPilot-VeoboxPilot.html#event:STORAGE_UPDATED">devices-api/VeoboxPilot~VeoboxPilot#STORAGE_UPDATED</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri Nov 19 2021 16:23:00 GMT+0100 (Central European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
